@@ -9,6 +9,8 @@ To run this project just run commands below:
 ```
 $ composer install
 $ docker-compose up -d
+$ docker-compose exec php docker-php-ext-install pdo pdo_mysql
+$ docker-compose exec php vendor/bin/phinx migrate
 ```
 
 ## Code Sniffer
