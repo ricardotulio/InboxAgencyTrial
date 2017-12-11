@@ -11,6 +11,14 @@ $ composer install
 $ docker-compose up -d
 ```
 
+## Code Sniffer
+
+To run the Code Sniffer, just exec `vendor/bin/phpcs --standard=PSR2 src/`.
+
+## Mess Detector
+
+To run the Code Sniffer, just exec `vendor/bin/phpmd`.
+
 ## Testing
 
-To run the project tests, just use the command `/vendor/bin/phpunit`.
+To run the project tests, just exec `/vendor/bin/phpunit`.
