@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+    http:
+        image: nginx
+        volumes:
+            - ./:/usr/share/nginx/html/
+            - ./build/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+        working_dir: /usr/share/nginx/html/
+        ports:
+            - 8080:80
+        depends_on:
+            - php
+
+    php:
+        image: php:5.6-fpm-alpine
+        env_file: .env
+        volumes:
+            - ./:/usr/share/nginx/html/
+        working_dir: /usr/share/nginx/html/
+
+    database:
+        image: mysql:5.6
+        env_file: .env

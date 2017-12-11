@@ -1,0 +1,14 @@
+{
+    "name": "ricardotulio/inbox-agency",
+    "description": "Trial challenge for Inbox Agency recruitment",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ricardo Ledo de Tulio",
+            "email": "ledo.tulio@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
