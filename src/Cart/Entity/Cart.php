@@ -10,6 +10,8 @@ interface Cart
 
     public function getCartItems();
 
+    public function hasItems();
+
     public function cleanCart();
 
     public function getCartAmount();

@@ -137,4 +137,21 @@ class SimpleCartTest extends TestCase
 
         $this->assertEquals(60, $cart->getCartAmount());
     }
+
+    /**
+     * @test
+     */
+    public function mustVerifyIfHasItems()
+    {
+        $cart = new SimpleCart();
+
+        $cartItem = $this->createMock(CartItem::class);
+        $cartItem->method('getId')->willReturn(30);
+
+        $this->assertFalse($cart->hasItems());
+
+        $cart->addCartItem($cartItem);
+
+        $this->assertTrue($cart->hasItems());
+    }
 }

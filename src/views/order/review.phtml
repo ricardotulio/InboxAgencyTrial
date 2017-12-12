@@ -2,16 +2,20 @@
     <tr>
         <th>Item</th>
         <th>Valor</th>
+        <th>Qty</th>
+        <th>Total</th>
         <th></th>
     </tr>
-    <?php foreach($products as $product): ?>
+    <?php foreach($cartItems as $cartItem): ?>
         <tr>
-            <td><?= $product->getName() ?></td>
-            <td><?= $product->getPrice() ?></td>
+            <td><?= $cartItem->getProduct()->getName() ?></td>
+            <td><?= $cartItem->getProduct()->getPrice() ?></td>
+            <td><?= $cartItem->getQty() ?></td>
+            <td><?= $cartItem->getItemAmount() ?></td>
         </tr>
     <?php endforeach; ?>
     <tr>
-        <td>Total</td>
+        <td colspan="3">Total</td>
         <td><?= $total ?></td>
     </tr>
 </table>

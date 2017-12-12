@@ -27,14 +27,14 @@ class OrderReview
     ) {
         $cart = $this->cartService->getCart();
 
-        if (!$cart->hasProduct()) {
+        if (!$cart->hasItems()) {
             return $response->withRedirect(
                 getenv('BASE_URL') . '/',
                 301
             );
         }
 
-        $cartItems = $cart->getItems();
+        $cartItems = $cart->getCartItems();
 
         $response = $this->view->render(
             $response,

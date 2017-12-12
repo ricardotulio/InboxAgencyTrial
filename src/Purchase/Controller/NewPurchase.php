@@ -5,21 +5,24 @@ namespace InboxAgency\Purchase\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
-use InboxAgency\Cart\Service\Cart;
+use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Purchase\Service\Purchase as PurchaseService;
 
 class NewPurchase
 {
-    private $cart;
+    private $cartService;
+
+    private $purchaseService;
+
     private $view;
 
     public function __construct(
-        Cart $cart,
-        PurchaseService $service,
+        CartService $cartService,
+        PurchaseService $purchaseService,
         PhpRenderer $view
     ) {
-        $this->cart = $cart;
-        $this->service = $service;
+        $this->cartService = $cartService;
+        $this->purchaseService = $purchaseService;
         $this->view = $view;
     }
 
@@ -27,18 +30,19 @@ class NewPurchase
         Request $request,
         Response $response
     ) {
-        if (!$this->cart->hasProduct()) {
+        $cart = $this->cartService->getCart();
+
+        if (!$cart->hasItems()) {
             return $response->withRedirect(
                 getenv('BASE_URL') . '/',
                 301
             );
         }
 
-        $products = $this->cart->getProducts();
-        $this->cart->cleanCart();
+        $cart->cleanCart();
+        $this->cartService->persistCart($cart);
 
-        $this->service->sendEmail();
-        die();
+        $this->purchaseService->sendEmail();
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/purchase/success/',

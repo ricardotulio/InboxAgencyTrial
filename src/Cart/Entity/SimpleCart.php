@@ -26,6 +26,11 @@ class SimpleCart implements Cart
         return $this->items;
     }
 
+    public function hasItems()
+    {
+        return count($this->items) > 0;
+    }
+
     public function cleanCart()
     {
         $this->items = [];
