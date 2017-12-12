@@ -38,7 +38,8 @@ class OrderReview
             $response,
             'order/review.phtml',
             [
-                'products' => $products
+                'products' => $products,
+                'total' => $this->cart->getTotalAmount()
             ]
         );
 

@@ -30,6 +30,12 @@ $container['conn'] = \Doctrine\DBAL\DriverManager::getConnection($connectionPara
 
 $container['view'] = new \Slim\Views\PhpRenderer("../src/views/");
 
+$authorizator = new InboxAgency\User\Middleware\Authorizator(
+    new InboxAgency\User\Service\SessionAuthorizator()
+);
+
+$app->add($authorizator);
+
 $app->get(
     '/login/',
     new InboxAgency\User\Controller\LoginForm(

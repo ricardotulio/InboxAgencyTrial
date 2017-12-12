@@ -10,6 +10,7 @@ use InboxAgency\User\Repository\UserRepository;
 class DoLogin
 {
     private $repository;
+
     private $view;
 
     public function __construct(
@@ -36,6 +37,8 @@ class DoLogin
                 ]
             );
         }
+
+        $_SESSION['logged'] = true;
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/',

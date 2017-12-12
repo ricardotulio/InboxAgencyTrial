@@ -133,7 +133,7 @@ class SessionCartText extends TestCase
     /**
      * @test
      */
-    public function mustCalculateTotalPriceFromCart()
+    public function mustCalculateTotalAmount()
     {
         $product1 = new Product();
         $product1->setId(1);
@@ -160,7 +160,7 @@ class SessionCartText extends TestCase
 
         $this->assertEquals(
             $expectedAmount,
-            $sessionCart->getTotalPrice()
+            $sessionCart->getTotalAmount()
         );
     }
 }

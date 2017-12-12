@@ -40,7 +40,7 @@ class SessionCart implements Cart
         $_SESSION['cart'] = [];
     }
 
-    public function getTotalPrice()
+    public function getTotalAmount()
     {
         $total = 0;
 
