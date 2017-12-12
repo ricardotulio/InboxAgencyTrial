@@ -6,7 +6,7 @@ use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class Get
+class LoginForm
 {
     private $view;
 

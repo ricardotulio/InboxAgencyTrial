@@ -8,7 +8,7 @@ class SessionCart implements Cart
 {
     public function addProduct($product)
     {
-        $_SESSION['cart'][] = $product->toArray();
+        $_SESSION['cart'][$product->getId()] = $product->toArray();
     }
 
     public function getProducts()
@@ -19,9 +19,14 @@ class SessionCart implements Cart
             $product = new Product();
             $product->fromArray($productData);
 
-            $products[] = $product;
+            $products[$product->getId()] = $product;
         }
 
         return $products;
+    }
+
+    public function removeProduct($product)
+    {
+        unset($_SESSION['cart'][$product->getId()]);
     }
 }

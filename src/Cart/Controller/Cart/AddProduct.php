@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart;
 use InboxAgency\Catalog\Entity\Product;
 
-class Post
+class AddProduct
 {
     private $cart;
 

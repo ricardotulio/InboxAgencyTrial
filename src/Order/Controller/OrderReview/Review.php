@@ -1,36 +1,39 @@
 <?php
 
-namespace InboxAgency\Catalog\Controller\Catalog;
+namespace InboxAgency\Order\Controller\OrderReview;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Catalog\Repository\ProductRepository;
+use InboxAgency\Cart\Service\Cart;
 
-class Get
+class Review
 {
-    private $repository;
+    private $cart;
+
     private $view;
 
     public function __construct(
-        ProductRepository $repository,
+        Cart $cart,
         PhpRenderer $view
     )
     {
-        $this->repository = $repository;
+        $this->cart = $cart;
         $this->view = $view;
     }
 
     public function __invoke(Request $request, Response $response)
     {
-        $products = $this->repository->getList();
+        $products = $this->cart->getProducts();
 
-        return $this->view->render(
-            $response, 
-            'catalog/product_list.phtml',
+        $response = $this->view->render(
+            $response,
+            'order/order_review.phtml',
             [
                 'products' => $products
             ]
         );
+
+        return $response;
     }
 }

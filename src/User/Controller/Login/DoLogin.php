@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\User\Repository\UserRepository;
 
-class Post
+class DoLogin
 {
     private $repository;
     private $view;

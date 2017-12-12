@@ -3,11 +3,18 @@
         <tr>
             <th>Nome</th>
             <th>Preço</th>
+            <th></th>
         </tr>
         <?php foreach($products as $product): ?>
             <tr>
                 <td><?= $product->getName() ?></td>
                 <td><?= $product->getPrice() ?></td>
+                <td>
+                    <form action="<?= getenv('BASE_URL') ?>/cart/remove/" method="post">
+                        <input type="hidden" name="id" value="<?= $product->getId() ?>" />
+                        <button type="submit">remover</button>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
     </table>

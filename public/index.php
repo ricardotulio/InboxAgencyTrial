@@ -31,15 +31,15 @@ $container['conn'] = \Doctrine\DBAL\DriverManager::getConnection($connectionPara
 $container['view'] = new \Slim\Views\PhpRenderer("../src/views/");
 
 $app->get(
-    '/login',
-    new InboxAgency\User\Controller\Login\Get(
+    '/login/',
+    new InboxAgency\User\Controller\Login\LoginForm(
         $container->get('view')
     )
 );
 
 $app->post(
-    '/login',
-    new InboxAgency\User\Controller\Login\Post( 
+    '/login/',
+    new InboxAgency\User\Controller\Login\DoLogin(
         new InboxAgency\User\Repository\DBALUserRepository(
             $container->get('conn')
         ),
@@ -49,7 +49,7 @@ $app->post(
 
 $app->get(
     '/',
-    new InboxAgency\Catalog\Controller\Catalog\Get(
+    new InboxAgency\Catalog\Controller\Catalog\Catalog(
         new InboxAgency\Catalog\Repository\DBALProductRepository(
             $container->get('conn')
         ),
@@ -58,16 +58,24 @@ $app->get(
 );
 
 $app->post(
-    '/cart',
-    new InboxAgency\Cart\Controller\Cart\Post(
+    '/cart/add/',
+    new InboxAgency\Cart\Controller\Cart\AddProduct(
+        new InboxAgency\Cart\Service\SessionCart(),
+        $container->get('view')
+    )
+);
+
+$app->post(
+    '/cart/remove/',
+    new InboxAgency\Cart\Controller\Cart\RemoveProduct(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
 );
 
 $app->get(
-    '/order/review',
-    new InboxAgency\Order\Controller\OrderReview\Get(
+    '/order/review/',
+    new InboxAgency\Order\Controller\OrderReview\Review(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
