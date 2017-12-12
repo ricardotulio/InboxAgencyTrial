@@ -22,8 +22,10 @@ class RemoveProduct
         $this->view = $view;
     }
 
-    public function __invoke(Request $request, Response $response)
-    {
+    public function __invoke(
+        Request $request,
+        Response $response
+    ) {
         $data = $request->getParsedBody();
 
         $product = new Product();

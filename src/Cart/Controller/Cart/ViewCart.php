@@ -21,8 +21,10 @@ class ViewCart
         $this->view = $view;
     }
 
-    public function __invoke(Request $request, Response $response)
-    {
+    public function __invoke(
+        Request $request,
+        Response $response
+    ) {
         $products = $this->cart->getProducts();
 
         $response = $this->view->render(

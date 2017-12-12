@@ -22,7 +22,7 @@ class NewPurchase
 
     public function __invoke(Request $request, Response $response)
     {
-        if(!$this->cart->hasProduct()) {
+        if (!$this->cart->hasProduct()) {
             return $response->withRedirect(
                 getenv('BASE_URL') . '/',
                 301
@@ -33,7 +33,7 @@ class NewPurchase
         $this->cart->cleanCart();
 
         return $response->withRedirect(
-            getenv('BASE_URL') . '/purchase/success/', 
+            getenv('BASE_URL') . '/purchase/success/',
             301
         );
     }

@@ -20,8 +20,10 @@ class Catalog
         $this->view = $view;
     }
 
-    public function __invoke(Request $request, Response $response)
-    {
+    public function __invoke(
+        Request $request,
+        Response $response
+    ) {
         $products = $this->repository->getList();
 
         return $this->view->render(

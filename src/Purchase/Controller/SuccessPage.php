@@ -10,7 +10,7 @@ class SuccessPage
 {
     private $view;
 
-    public function __construct(PhpRenderer $view) 
+    public function __construct(PhpRenderer $view)
     {
         $this->view = $view;
     }
@@ -21,5 +21,3 @@ class SuccessPage
         return $response;
     }
 }
-
-

@@ -20,8 +20,10 @@ class DoLogin
         $this->view = $view;
     }
 
-    public function __invoke(Request $request, Response $response)
-    {
+    public function __invoke(
+        Request $request,
+        Response $response
+    ) {
         $data = $request->getParsedBody();
         $user = $this->repository->findByEmail($data['email']);
 
@@ -36,7 +38,7 @@ class DoLogin
         }
 
         return $response->withRedirect(
-            getenv('BASE_URL') . '/', 
+            getenv('BASE_URL') . '/',
             301
         );
     }
