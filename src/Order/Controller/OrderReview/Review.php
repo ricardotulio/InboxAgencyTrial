@@ -23,6 +23,13 @@ class Review
 
     public function __invoke(Request $request, Response $response)
     {
+        if(!$this->cart->hasProduct()) {
+            return $response->withRedirect(
+                getenv('BASE_URL') . '/',
+                301
+            );
+        }
+
         $products = $this->cart->getProducts();
 
         $response = $this->view->render(
