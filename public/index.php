@@ -74,9 +74,32 @@ $app->post(
 );
 
 $app->get(
+    '/cart/',
+    new InboxAgency\Cart\Controller\Cart\ViewCart(
+        new InboxAgency\Cart\Service\SessionCart(),
+        $container->get('view')
+    )
+);
+
+$app->get(
     '/order/review/',
     new InboxAgency\Order\Controller\OrderReview\Review(
         new InboxAgency\Cart\Service\SessionCart(),
+        $container->get('view')
+    )
+);
+
+$app->post(
+    '/purchase/',
+    new InboxAgency\Purchase\Controller\NewPurchase(
+        new InboxAgency\Cart\Service\SessionCart(),
+        $container->get('view')
+    )
+);
+
+$app->get(
+    '/purchase/success/',
+    new InboxAgency\Purchase\Controller\SuccessPage(
         $container->get('view')
     )
 );

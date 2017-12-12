@@ -1,0 +1,53 @@
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Valor</th>
+        <th></th>
+    </tr>
+    <?php foreach($products as $product): ?>
+        <tr>
+            <td><?= $product->getName() ?></td>
+            <td><?= $product->getPrice() ?></td>
+        </tr>
+    <?php endforeach; ?>
+    <tr>
+        <td>Frete</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td>10</td>
+    </tr>
+</table>
+
+<form action="<?= getenv('BASE_URL') ?>/purchase/" method="post">
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="card_holder_name" type="text" class="validate">
+            <label for="card_holder_name">Nome no cartão</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="card_number" type="text" class="validate">
+            <label for="card_number">Número do cartão</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <input id="card_cvv" type="text" class="validate">
+            <label for="card_cvv">CVV</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <input id="card_expiration_date" type="text" class="validate">
+            <label for="card_expiration_date">Expiration date</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col right-align">
+            <button type="submit" class="waves-effect waves-light btn">Pay</button>
+        </div>
+    </div>
+</form>

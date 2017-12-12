@@ -1,13 +1,13 @@
 <?php
 
-namespace InboxAgency\Order\Controller\OrderReview;
+namespace InboxAgency\Cart\Controller\Cart;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart;
 
-class Review
+class ViewCart
 {
     private $cart;
 
@@ -27,7 +27,7 @@ class Review
 
         $response = $this->view->render(
             $response,
-            'order/review.phtml',
+            'cart/view.phtml',
             [
                 'products' => $products
             ]

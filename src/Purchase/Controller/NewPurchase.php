@@ -1,16 +1,15 @@
 <?php
 
-namespace InboxAgency\Order\Controller\OrderReview;
+namespace InboxAgency\Purchase\Controller;
 
-use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Views\PhpRenderer;
 use InboxAgency\Cart\Service\Cart;
 
-class Review
+class NewPurchase
 {
     private $cart;
-
     private $view;
 
     public function __construct(
@@ -23,16 +22,11 @@ class Review
 
     public function __invoke(Request $request, Response $response)
     {
-        $products = $this->cart->getProducts();
+        $this->cart->cleanCart();
 
-        $response = $this->view->render(
-            $response,
-            'order/review.phtml',
-            [
-                'products' => $products
-            ]
+        return $response->withRedirect(
+            getenv('BASE_URL') . '/purchase/success/', 
+            301
         );
-
-        return $response;
     }
 }

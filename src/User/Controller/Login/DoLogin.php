@@ -34,7 +34,10 @@ class DoLogin
                 ]
             );
         }
- 
-        return $response->withRedirect('/', 301);
+
+        return $response->withRedirect(
+            getenv('BASE_URL') . '/', 
+            301
+        );
     }
 }
