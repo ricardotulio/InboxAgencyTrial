@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50368664336a3de9e18e9feb68331e98",
-    "content-hash": "18fbae24e392f68e6a289c88f73129e8",
+    "hash": "3c4881d619752f93b15616d9bd52404a",
+    "content-hash": "11f7eec25f24b60447bf06b23acf2a7f",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -883,55 +883,6 @@
             "time": "2017-09-09 13:54:33"
         },
         {
-            "name": "slim/php-view",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slimphp/PHP-View.git",
-                "reference": "122ed121a8d9cf91a94020814d2a3ee6c836754f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/PHP-View/zipball/122ed121a8d9cf91a94020814d2a3ee6c836754f",
-                "reference": "122ed121a8d9cf91a94020814d2a3ee6c836754f",
-                "shasum": ""
-            },
-            "require": {
-                "psr/http-message": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8",
-                "slim/slim": "^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Slim\\Views\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Glenn Eggleton",
-                    "email": "geggleto@gmail.com"
-                }
-            ],
-            "description": "Render PHP view scripts into a PSR-7 Response object.",
-            "keywords": [
-                "framework",
-                "php",
-                "phtml",
-                "renderer",
-                "slim",
-                "template",
-                "view"
-            ],
-            "time": "2016-10-11 07:43:08"
-        },
-        {
             "name": "slim/slim",
             "version": "3.9.2",
             "source": {
@@ -1001,6 +952,56 @@
                 "router"
             ],
             "time": "2017-11-26 19:13:09"
+        },
+        {
+            "name": "slim/twig-view",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slimphp/Twig-View.git",
+                "reference": "f6ff5ec3a24e11866376b8ffa235fbbb7e1d1301"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slimphp/Twig-View/zipball/f6ff5ec3a24e11866376b8ffa235fbbb7e1d1301",
+                "reference": "f6ff5ec3a24e11866376b8ffa235fbbb7e1d1301",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "psr/http-message": "^1.0",
+                "twig/twig": "^1.18|^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8|^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Slim\\Views\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Lockhart",
+                    "email": "hello@joshlockhart.com",
+                    "homepage": "http://joshlockhart.com"
+                }
+            ],
+            "description": "Slim Framework 3 view helper built on top of the Twig 2 templating component",
+            "homepage": "http://slimframework.com",
+            "keywords": [
+                "framework",
+                "slim",
+                "template",
+                "twig",
+                "view"
+            ],
+            "time": "2017-09-20 19:47:37"
         },
         {
             "name": "symfony/config",
@@ -1354,6 +1355,71 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2017-12-04 18:15:22"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.35.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~3.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.35-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2017-09-27 18:06:46"
         }
     ],
     "packages-dev": [
@@ -1458,16 +1524,16 @@
         },
         {
             "name": "pdepend/pdepend",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "9392319cbed95b12756945354c8b22be314b9c2b"
+                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/9392319cbed95b12756945354c8b22be314b9c2b",
-                "reference": "9392319cbed95b12756945354c8b22be314b9c2b",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
+                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
                 "shasum": ""
             },
             "require": {
@@ -1494,7 +1560,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-06 21:23:07"
+            "time": "2017-12-12 17:28:44"
         },
         {
             "name": "phpdocumentor/reflection-common",

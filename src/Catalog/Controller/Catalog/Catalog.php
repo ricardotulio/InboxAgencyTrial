@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Catalog\Controller\Catalog;
 
-use Slim\Views\PhpRenderer;
+use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Catalog\Repository\ProductRepository;
@@ -14,7 +14,7 @@ class Catalog
 
     public function __construct(
         ProductRepository $repository,
-        PhpRenderer $view
+        Twig $view
     ) {
         $this->repository = $repository;
         $this->view = $view;
@@ -28,7 +28,7 @@ class Catalog
 
         return $this->view->render(
             $response,
-            'catalog/product_list.phtml',
+            'catalog/product_list.html',
             [
                 'products' => $products
             ]

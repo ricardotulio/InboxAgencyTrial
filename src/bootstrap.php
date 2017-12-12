@@ -16,7 +16,7 @@ $authorizator = new InboxAgency\User\Middleware\Authorizator(
 $app->add($authorizator);
 
 foreach ($routes as $route) {
-    $app->$route['method']($route['path'], $route['controller']);
+    $app->$route['method']($route['path'], $route['controller'])->setName($route['name']);
 }
 
 $app->run();

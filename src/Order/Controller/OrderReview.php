@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Order\Controller;
 
-use Slim\Views\PhpRenderer;
+use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart as CartService;
@@ -15,7 +15,7 @@ class OrderReview
 
     public function __construct(
         CartService $cartService,
-        PhpRenderer $view
+        Twig $view
     ) {
         $this->cartService = $cartService;
         $this->view = $view;
@@ -38,7 +38,7 @@ class OrderReview
 
         $response = $this->view->render(
             $response,
-            'order/review.phtml',
+            'order/review.html',
             [
                 'cartItems' => $cartItems,
                 'total' => $cart->getCartAmount()

@@ -2,7 +2,6 @@
 
 namespace InboxAgency\Cart\Controller;
 
-use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Catalog\Entity\Product;
@@ -15,12 +14,8 @@ class AddProduct
 
     private $view;
 
-    public function __construct(
-        CartService $service,
-        PhpRenderer $view
-    ) {
+    public function __construct(CartService $service) {
         $this->service = $service;
-        $this->view = $view;
     }
 
     public function __invoke(

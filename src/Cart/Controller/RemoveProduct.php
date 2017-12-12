@@ -2,7 +2,6 @@
 
 namespace InboxAgency\Cart\Controller;
 
-use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart as CartService;
@@ -16,8 +15,7 @@ class RemoveProduct
     private $view;
 
     public function __construct(
-        CartService $service,
-        PhpRenderer $view
+        CartService $service
     ) {
         $this->service = $service;
         $this->view = $view;

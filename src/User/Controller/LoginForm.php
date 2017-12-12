@@ -2,7 +2,7 @@
 
 namespace InboxAgency\User\Controller;
 
-use Slim\Views\PhpRenderer;
+use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -10,7 +10,7 @@ class LoginForm
 {
     private $view;
 
-    public function __construct(PhpRenderer $view)
+    public function __construct(Twig $view)
     {
         $this->view = $view;
     }
@@ -19,6 +19,6 @@ class LoginForm
         Request $request,
         Response $response
     ) {
-        return $this->view->render($response, 'user/login.phtml');
+        return $this->view->render($response, 'user/login.html');
     }
 }

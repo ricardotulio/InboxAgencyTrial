@@ -4,7 +4,6 @@ namespace InboxAgency\Purchase\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\PhpRenderer;
 use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Purchase\Service\Purchase as PurchaseService;
 
@@ -18,8 +17,7 @@ class NewPurchase
 
     public function __construct(
         CartService $cartService,
-        PurchaseService $purchaseService,
-        PhpRenderer $view
+        PurchaseService $purchaseService
     ) {
         $this->cartService = $cartService;
         $this->purchaseService = $purchaseService;

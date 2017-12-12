@@ -9,9 +9,20 @@ $container['conn'] = \Doctrine\DBAL\DriverManager::getConnection(
     new \Doctrine\DBAL\Configuration()
 );
 
-$container['view'] = new \Slim\Views\PhpRenderer(
-    $config['view']['path']
-);
+$container['view'] = function($container) use ($config) {
+    $view = new \Slim\Views\Twig($config['view']['paths'], [
+        'cache' => $config['view']['cache']
+    ]);
+
+    $view->addExtension(
+        new \Slim\Views\TwigExtension(
+            $container['router'],
+            $config['app']['base_path']
+        )
+    );
+
+    return $view;
+};
 
 $container['user_repository'] = function($container) {
     return new \InboxAgency\User\Repository\DBALUserRepository(
@@ -55,8 +66,7 @@ $container['ctrl_catalog'] = function($container) {
 
 $container['ctrl_cart_additem'] = function($container) {
     return new InboxAgency\Cart\Controller\AddProduct(
-        $container->get('service_cart'),
-        $container->get('view')
+        $container->get('service_cart')
     );
 };
 

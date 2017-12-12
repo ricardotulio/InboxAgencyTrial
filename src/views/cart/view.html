@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% if cartItems %}
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Qty</th>
+        <th></th>
+    </tr>
+    {% for cartItem in cartItems %}
+    <tr>
+        <td>{{ cartItem.product.name }}</td>
+        <td>{{ cartItem.product.price }}</td>
+        <td>{{ cartItem.qty }}</td>
+        <td>
+            <form action="{{ path_for('cart.remove') }}" method="post">
+                <input type="hidden" name="id" value="{{ cartItem.id }}" />
+                <button type="submit">remover</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{{ path_for('order.review') }}">Finalizar compra</a>
+{% else %}
+<h1>Não há produtos no carrinho.</h1>
+{% endif %}
+<a href="{{ path_for('catalog.view') }}">Voltar</a>
+{% endblock %}

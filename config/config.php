@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'app' => [
+        'base_path' => getenv('BASE_URL')
+    ],
     'container' => [
         'settings' => [
             'displayErrorDetails' => true
@@ -16,6 +19,9 @@ return [
     'mail' => [
     ],
     'view' => [
-        'path' => '../src/views/'
+        'paths' => [
+            __DIR__ . '/../src/views/'
+        ],
+        'cache' => false
     ]
 ];
