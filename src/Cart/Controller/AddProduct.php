@@ -1,6 +1,6 @@
 <?php
 
-namespace InboxAgency\Cart\Controller\Cart;
+namespace InboxAgency\Cart\Controller;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;

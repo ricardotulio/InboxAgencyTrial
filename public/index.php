@@ -32,14 +32,14 @@ $container['view'] = new \Slim\Views\PhpRenderer("../src/views/");
 
 $app->get(
     '/login/',
-    new InboxAgency\User\Controller\Login\LoginForm(
+    new InboxAgency\User\Controller\LoginForm(
         $container->get('view')
     )
 );
 
 $app->post(
     '/login/',
-    new InboxAgency\User\Controller\Login\DoLogin(
+    new InboxAgency\User\Controller\DoLogin(
         new InboxAgency\User\Repository\DBALUserRepository(
             $container->get('conn')
         ),
@@ -59,7 +59,7 @@ $app->get(
 
 $app->post(
     '/cart/add/',
-    new InboxAgency\Cart\Controller\Cart\AddProduct(
+    new InboxAgency\Cart\Controller\AddProduct(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
@@ -67,7 +67,7 @@ $app->post(
 
 $app->post(
     '/cart/remove/',
-    new InboxAgency\Cart\Controller\Cart\RemoveProduct(
+    new InboxAgency\Cart\Controller\RemoveProduct(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
@@ -75,7 +75,7 @@ $app->post(
 
 $app->get(
     '/cart/',
-    new InboxAgency\Cart\Controller\Cart\ViewCart(
+    new InboxAgency\Cart\Controller\ViewCart(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
@@ -83,7 +83,7 @@ $app->get(
 
 $app->get(
     '/order/review/',
-    new InboxAgency\Order\Controller\OrderReview\Review(
+    new InboxAgency\Order\Controller\OrderReview(
         new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )

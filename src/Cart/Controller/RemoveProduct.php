@@ -1,13 +1,14 @@
 <?php
 
-namespace InboxAgency\Cart\Controller\Cart;
+namespace InboxAgency\Cart\Controller;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart;
+use InboxAgency\Catalog\Entity\Product;
 
-class ViewCart
+class RemoveProduct
 {
     private $cart;
 
@@ -25,16 +26,13 @@ class ViewCart
         Request $request,
         Response $response
     ) {
-        $products = $this->cart->getProducts();
+        $data = $request->getParsedBody();
 
-        $response = $this->view->render(
-            $response,
-            'cart/view.phtml',
-            [
-                'products' => $products
-            ]
-        );
+        $product = new Product();
+        $product->fromArray($data);
 
-        return $response;
+        $this->cart->removeProduct($product);
+
+        return $response->withRedirect('/cart/', 301);
     }
 }

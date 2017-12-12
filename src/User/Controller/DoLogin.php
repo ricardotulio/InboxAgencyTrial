@@ -1,6 +1,6 @@
 <?php
 
-namespace InboxAgency\User\Controller\Login;
+namespace InboxAgency\User\Controller;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;

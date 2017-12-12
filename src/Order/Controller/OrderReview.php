@@ -1,13 +1,13 @@
 <?php
 
-namespace InboxAgency\Order\Controller\OrderReview;
+namespace InboxAgency\Order\Controller;
 
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart;
 
-class Review
+class OrderReview
 {
     private $cart;
 
