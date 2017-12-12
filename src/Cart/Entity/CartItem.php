@@ -14,6 +14,8 @@ interface CartItem
 
     public function getQty();
 
+    public function incrementQty();
+
     public function getProductPrice();
 
     public function getItemAmount();

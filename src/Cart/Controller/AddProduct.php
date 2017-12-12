@@ -5,6 +5,7 @@ namespace InboxAgency\Cart\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Catalog\Repository\ProductRepository;
 use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Cart\Entity\SimpleCartItem;
 
@@ -12,10 +13,14 @@ class AddProduct
 {
     private $service;
 
-    private $view;
+    private $productRepository;
 
-    public function __construct(CartService $service) {
+    public function __construct(
+        CartService $service,
+        ProductRepository $productRepository
+    ) {
         $this->service = $service;
+        $this->productRepository = $productRepository;
     }
 
     public function __invoke(
@@ -24,16 +29,18 @@ class AddProduct
     ) {
         $data = $request->getParsedBody();
 
-        $product = new Product();
-        $product->fromArray($data);
+        $product = $this->productRepository->findById($data['id']);
 
-        $cartItem = new SimpleCartItem($product);
+        if ($product) {
+            $cartItem = new SimpleCartItem($product);
+            
+            $cart = $this->service->getCart();
+            $cart->addCartItem($cartItem);
+            $this->service->persistCart($cart);
+            
+            return $response->withRedirect('/cart/', 301);
+        }
 
-        $cart = $this->service->getCart();
-        $cart->addCartItem($cartItem);
-
-        $this->service->persistCart($cart);
-
-        return $response->withRedirect('/cart/', 301);
+        return $response->withRedirect('/', 301);
     }
 }

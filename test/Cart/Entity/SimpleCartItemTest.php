@@ -26,6 +26,20 @@ class SimpleCartItemTest extends TestCase
     /**
      * @test
      */
+    public function mustIncrementQty()
+    {
+        $product = $this->createMock(Product::class);
+        $product->method('getPrice')->willReturn($price);
+
+        $cartItem = new SimpleCartItem($product);
+        $cartItem->incrementQty();
+
+        $this->assertEquals(2, $cartItem->getQty());
+    }
+
+    /**
+     * @test
+     */
     public function mustCalculateItemAmount()
     {
         $price = 15.0;

@@ -7,12 +7,12 @@
             <h1>Login</h1>
         </div>
         <div class="row grey lighten-3">
-            <?php if(!is_null($loginError)): ?>
+            {% if loginError %}
                 <div class="col s12 center-align">
-                    <span class="red-text"><?= $loginError ?></span>
+                    <span class="red-text">{{ loginError }}</span>
                 </div>
-            <?php endif; ?>
-            <form class="col s12" action="<?= getenv('BASE_URL') ?>/login/" method="post">
+            {% endif %}
+            <form class="col s12" action="{{ path_for('user.login') }}" method="post">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" name="email" type="email" class="validate">

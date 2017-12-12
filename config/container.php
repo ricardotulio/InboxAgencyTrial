@@ -30,6 +30,12 @@ $container['user_repository'] = function($container) {
     );
 };
 
+$container['product_repository'] = function($container) {
+    return new \InboxAgency\Catalog\Repository\DBALProductRepository(
+        $container->get('conn')
+    );
+};
+
 $container['service_cart'] = function($container) {
     return new InboxAgency\Cart\Service\SessionCart();
 };
@@ -66,7 +72,8 @@ $container['ctrl_catalog'] = function($container) {
 
 $container['ctrl_cart_additem'] = function($container) {
     return new InboxAgency\Cart\Controller\AddProduct(
-        $container->get('service_cart')
+        $container->get('service_cart'),
+        $container->get('product_repository')
     );
 };
 

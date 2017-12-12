@@ -34,6 +34,11 @@ class SimpleCartItem implements CartItem
         return $this->qty;
     }
 
+    public function incrementQty()
+    {
+        $this->qty++;
+    }
+
     public function getProductPrice()
     {
         return $this->getProduct()->getPrice();

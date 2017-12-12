@@ -1,31 +1,47 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% if cartItems %}
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Qty</th>
-        <th></th>
-    </tr>
-    {% for cartItem in cartItems %}
-    <tr>
-        <td>{{ cartItem.product.name }}</td>
-        <td>{{ cartItem.product.price }}</td>
-        <td>{{ cartItem.qty }}</td>
-        <td>
-            <form action="{{ path_for('cart.remove') }}" method="post">
-                <input type="hidden" name="id" value="{{ cartItem.id }}" />
-                <button type="submit">remover</button>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
+{% if cart.cartItems %}
+<h1>Seu carrinho</h1>
+<hr />
+<table class="striped responsive-table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cartItem in cart.cartItems %}
+        <tr>
+            <td>{{ cartItem.product.name }}</td>
+            <td>R$ {{ cartItem.product.price|number_format(2, ',', '.') }}</td>
+            <td>{{ cartItem.qty }}</td>
+            <td>R$ {{ cartItem.itemAmount|number_format(2, ',', '.') }}</td>
+            <td class="right-align">
+                <form name="remove_product" action="{{ path_for('cart.remove') }}" method="post">
+                    <input type="hidden" name="id" value="{{ cartItem.id }}" />
+                    <a href="#" onclick="parentNode.submit()"><i class="material-icons">delete</i></a>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <a class="btn" href="{{ path_for('order.review') }}"><i class="material-icons left">shopping_cart</i>Finalizar compra</a>
+            </td>
+            <td colspan="4" class="valign-wrapper">
+                <i class="small material-icons right-align">refresh</i>
+                <span class="flow-text right-align">R$ {{ cart.cartAmount|number_format(2, ',', '.') }}</span>
+            </td>
+        </tr>
+    </tfoot>
 </table>
-<a href="{{ path_for('order.review') }}">Finalizar compra</a>
 {% else %}
 <h1>Não há produtos no carrinho.</h1>
 {% endif %}
-<a href="{{ path_for('catalog.view') }}">Voltar</a>
 {% endblock %}

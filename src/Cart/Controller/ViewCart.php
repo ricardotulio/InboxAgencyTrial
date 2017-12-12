@@ -25,14 +25,11 @@ class ViewCart
         Request $request,
         Response $response
     ) {
-        $cart = $this->service->getCart();
-        $cartItems = $cart->getCartItems();
-
         $response = $this->view->render(
             $response,
             'cart/view.html',
             [
-                'cartItems' => $cartItems
+                'cart' => $this->service->getCart()
             ]
         );
 

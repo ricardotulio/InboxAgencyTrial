@@ -14,6 +14,26 @@ class DBALProductRepository implements ProductRepository
         $this->conn = $conn;
     }
 
+    public function findById($id)
+    {
+        $sql = 'SELECT * FROM products where id = :id';
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue('id', $id);
+        $stmt->execute();
+
+        $productData = $stmt->fetch();
+
+        $product = false;
+        
+        if ($productData) {
+            $product = new Product();
+            $product->fromArray($productData);
+        }
+
+        return $product;
+    }
+
     public function getList()
     {
         $sql = 'SELECT * FROM products';

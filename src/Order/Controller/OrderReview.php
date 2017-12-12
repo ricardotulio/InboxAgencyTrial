@@ -34,14 +34,11 @@ class OrderReview
             );
         }
 
-        $cartItems = $cart->getCartItems();
-
         $response = $this->view->render(
             $response,
             'order/review.html',
             [
-                'cartItems' => $cartItems,
-                'total' => $cart->getCartAmount()
+                'cart' => $cart
             ]
         );
 

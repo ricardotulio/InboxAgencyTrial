@@ -3,11 +3,21 @@
     <head>
         <meta charset="utf8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </head>
     <body>
+        <nav>
+            <div class="nav-wrapper container">
+                <a href="{{ path_for('catalog.view') }}" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{{ path_for('cart.view') }}">Carrinho</a></li>
+                    <li><a href="{{ path_for('user.logout') }}">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             {% block content %}{% endblock %}
         </div>

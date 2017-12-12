@@ -27,6 +27,21 @@ class SimpleCartTest extends TestCase
     /**
      * @test
      */
+    public function mustIncrementIfHasItem()
+    {
+        $cart = new SimpleCart();
+
+        $cartItem = $this->createMock(CartItem::class);
+        $cartItem->method('getId')->willReturn(10);
+        $cartItem->expects($this->once())->method('incrementQty');
+
+        $cart->addCartItem($cartItem);
+        $cart->addCartItem($cartItem);
+    }
+
+    /**
+     * @test
+     */
     public function mustRemoveCartItem()
     {
         $cartItem1Id = 57;

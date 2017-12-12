@@ -1,34 +1,49 @@
 {% extends "layout.html" %}
 
-{% block content %} 
-<table>
-    <tr>
-        <th>Item</th>
-        <th>Valor</th>
-        <th>Qty</th>
-        <th>Total</th>
-        <th></th>
-    </tr>
-    {% for cartItem in cartItems %}
-        <tr>
-            <td>{{ cartItem.product.name }}</td>
-            <td>{{ cartItem.product.price }}</td>
-            <td>{{ cartItem.qty }}</td>
-            <td>{{ cartItem.itemAmount }}</td>
-        </tr>
-    {% endfor %}
-    <tr>
-        <td colspan="3">Total</td>
-        <td>{{ total }}</td>
-    </tr>
-</table>
-
-<form action="{{ path_for('purchase.new') }}" method="post">
-    <div class="row">
-        <div class="input-field col right-align">
-            <button type="submit" class="waves-effect waves-light btn">Buy</button>
+{% block content %}
+<div class="row">
+    <div class="col s7">
+        <div class="row">
+            <div class="col s3">
+                <div class="row">
+                    Endereço de combrança
+                </div>
+            </div>
+            <div class="col s7">
+                <div class="row">
+                    Rua Major Carlos Del Prete, 709 - Casa 47, São Paulo, SP, CEP 09530-000, Brasil
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5>Forma de pagamento:</h5>
+            <hr />
+            <form action="{{ path_for('purchase.new') }}" method="post">
+                <div class="row">
+                    <div class="input-field col s12 right-align">
+                        <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">payment</i>Comprar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
-<a href="{{ path_for('cart.view') }}">Voltar para o carrinho</a>
+    <div class="col s5" style="height: 100%">
+        <div class="row">
+            <table>
+                <tbody>
+                {% for cartItem in cart.cartItems %}
+                    <tr>
+                        <td>{{ cartItem.product.name }}</td>
+                        <td>R$ {{ cartItem.itemAmount|number_format(2, ',', '.')  }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tr>
+                    <td>Total</td>
+                    <td>R$ {{ cart.cartAmount|number_format(2, ',', '.') }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

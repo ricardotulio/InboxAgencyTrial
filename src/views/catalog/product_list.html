@@ -1,28 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<a href="{{ path_for('cart.view') }}">Carrinho</a>
-<a href="{{ path_for('user.logout') }}">Sair</a>
+<h1>Produtos</h1>
+<hr />
 <div class="product-list row">
 {% for product in products %}
-    <div class="product col s4">
-        <div class="row">
-            <div class="product-name col s12">
-                <div class="row">
-                    <span>{{ product.name }}</span>
-                </div>
+    <div class="col s4">
+        <div class="card">
+            <div class="card-image">
+                <img src="https://www.louet.com/application/glue/themes/louet/images/NoImage.jpg">
             </div>
-            <div class="product-name col s12">
-                <div class="row">
-                    <span>{{ product.price }}</span>
-                </div>
+            <div class="card-content right-align">
+                <div>{{ product.name }}</div>
+                <div class="card-title">R$ {{ product.price|number_format(2, ',', '.') }}</div>
             </div>
-            <div class="product-name col s12">
-                <form class="row" action="{{ path_for('cart.add') }}" method="post">
-                    <input type="hidden" name="id" value="{{ product.id }}">
-                    <input type="hidden" name="name" value="{{ product.name }}">
-                    <input type="hidden" name="price" value="{{ product.price }}">
-                    <button type="submit">Adicionar ao carrinho</button>
+            <div class="card-action center-align">
+                <form action="{{ path_for('cart.add') }}" method="post">
+                    <input type="hidden" id="id" name="id" value="{{ product.id }}">
+                    <button class="btn" type="submit"><i class="material-icons left">shopping_cart</i>Comprar</button>
                 </form>
             </div>
         </div>

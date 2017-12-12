@@ -13,7 +13,7 @@ class Logout
         Request $request,
         Response $response
     ) {
-        unset($_SESSION['logged']);
+        $_SESSION = [];
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/login/',

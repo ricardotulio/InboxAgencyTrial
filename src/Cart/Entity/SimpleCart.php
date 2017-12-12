@@ -13,7 +13,11 @@ class SimpleCart implements Cart
 
     public function addCartItem(CartItem $item)
     {
-        $this->items[$item->getId()] = $item;
+        if (!isset($this->items[$item->getId()])) {
+            return $this->items[$item->getId()] = $item;
+        }
+
+        return $this->items[$item->getId()]->incrementQty();
     }
 
     public function removeCartItem(CartItem $item)

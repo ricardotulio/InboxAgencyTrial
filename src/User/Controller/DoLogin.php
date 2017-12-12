@@ -2,7 +2,7 @@
 
 namespace InboxAgency\User\Controller;
 
-use Slim\Views\PhpRenderer;
+use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\User\Repository\UserRepository;
@@ -15,7 +15,7 @@ class DoLogin
 
     public function __construct(
         UserRepository $repository,
-        PhpRenderer $view
+        Twig $view
     ) {
         $this->repository = $repository;
         $this->view = $view;
