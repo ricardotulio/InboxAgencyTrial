@@ -10,6 +10,8 @@ class CreateProductTable extends AbstractMigration
         $table = $this->table('products');
         $table->addColumn('name', 'string')
             ->addColumn('price', 'decimal')
+            ->addColumn('created', 'datetime')
+            ->addColumn('created', 'datetime', ['null' => true])
             ->create();
     }
 }

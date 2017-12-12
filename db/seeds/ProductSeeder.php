@@ -10,23 +10,28 @@ class ProductSeeder extends AbstractSeed
         $data = [
             [
                 'name' => 'Celular',
-                'price' => 300.00
+                'price' => 300.00,
+                'created' => '2017-12-01'
             ],
             [
                 'name' => 'Notebook',
-                'price' => 450.00
+                'price' => 450.00,
+                'created' => '2017-12-01'
             ],
             [
                 'name' => 'Tablet',
-                'price' => 320.00
+                'price' => 320.00,
+                'created' => '2017-12-01'
             ],
             [
                 'name' => 'Playstation 4',
-                'price' => 250.00
+                'price' => 250.00,
+                'created' => '2017-12-01'
             ],
             [
                 'name' => 'Xbox One',
-                'price' => 222.00
+                'price' => 222.00,
+                'created' => '2017-12-01'
             ]
         ];
 
