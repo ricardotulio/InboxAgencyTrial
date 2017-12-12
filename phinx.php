@@ -2,7 +2,8 @@
 
 return array(
     "paths" => array(
-        "migrations" => "db/migrations"
+        "migrations" => "db/migrations",
+        "seeds" => "db/seeds"
     ),
     "environments" => array(
         "default_migration_table" => "phinxlog",

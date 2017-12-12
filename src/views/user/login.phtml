@@ -4,6 +4,7 @@
         <meta charset="utf8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </head>
     <body>
@@ -14,16 +15,21 @@
                         <h1>Login</h1>
                     </div>
                     <div class="row grey lighten-3">
-                    <form class="col s12" action="<?= getenv('BASE_URL') ?>/login">
+                        <?php if(!is_null($loginError)): ?>
+                            <div class="col s12 center-align">
+                                <span class="red-text"><?= $loginError ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <form class="col s12" action="<?= getenv('BASE_URL') ?>/login" method="post">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate">
+                                    <input id="email" name="email" type="email" class="validate">
                                     <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="password" type="password" class="validate">
+                                    <input id="password" name="password" type="password" class="validate">
                                     <label for="password">Password</label>
                                 </div>
                             </div>
