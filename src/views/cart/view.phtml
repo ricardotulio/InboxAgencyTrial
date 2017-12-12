@@ -18,5 +18,8 @@
             </tr>
         <?php endforeach; ?>
     </table>
-<? endif; ?>
-<a href="<?= getenv('BASE_URL') ?>/order/review/">Finalizar compra</a>
+    <a href="<?= getenv('BASE_URL') ?>/order/review/">Finalizar compra</a>
+<?php else: ?>
+    <h1>Não há produtos no carrinho.</h1>
+<?php endif; ?>
+<a href="<?= getenv('BASE_URL') ?>/">Voltar</a>
