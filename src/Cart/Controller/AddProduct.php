@@ -33,6 +33,6 @@ class AddProduct
 
         $this->cart->addProduct($product);
 
-        return $response->withRedirect('/', 301);
+        return $response->withRedirect('/cart/', 301);
     }
 }
