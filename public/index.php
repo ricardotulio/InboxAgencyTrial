@@ -10,7 +10,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $configuration = [
     'settings' => [
-            'displayErrorDetails' => true
+        'displayErrorDetails' => true
     ]
 ];
 

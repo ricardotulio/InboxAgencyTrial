@@ -15,7 +15,7 @@ class SessionCart implements Cart
     {
         $products = [];
 
-        foreach($_SESSION['cart'] as $productData) {
+        foreach ($_SESSION['cart'] as $productData) {
             $product = new Product();
             $product->fromArray($productData);
 
@@ -28,5 +28,10 @@ class SessionCart implements Cart
     public function removeProduct($product)
     {
         unset($_SESSION['cart'][$product->getId()]);
+    }
+
+    public function cleanCart()
+    {
+        $_SESSION['cart'] = [];
     }
 }

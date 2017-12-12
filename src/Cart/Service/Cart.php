@@ -9,4 +9,6 @@ interface Cart
     public function removeProduct($product);
 
     public function getProducts();
+
+    public function cleanCart();
 }

@@ -15,8 +15,7 @@ class Catalog
     public function __construct(
         ProductRepository $repository,
         PhpRenderer $view
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->view = $view;
     }
@@ -26,7 +25,7 @@ class Catalog
         $products = $this->repository->getList();
 
         return $this->view->render(
-            $response, 
+            $response,
             'catalog/product_list.phtml',
             [
                 'products' => $products

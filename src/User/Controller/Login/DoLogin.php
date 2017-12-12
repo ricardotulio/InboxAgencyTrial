@@ -15,8 +15,7 @@ class DoLogin
     public function __construct(
         UserRepository $repository,
         PhpRenderer $view
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->view = $view;
     }
@@ -34,8 +33,8 @@ class DoLogin
                     'loginError' => 'E-mail e/ou senha inválidos.'
                 ]
             );
-        } else {
-            return $response->withRedirect('/', 301);
         }
+ 
+        return $response->withRedirect('/', 301);
     }
 }

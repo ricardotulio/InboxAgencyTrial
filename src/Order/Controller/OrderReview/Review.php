@@ -16,8 +16,7 @@ class Review
     public function __construct(
         Cart $cart,
         PhpRenderer $view
-    )
-    {
+    ) {
         $this->cart = $cart;
         $this->view = $view;
     }

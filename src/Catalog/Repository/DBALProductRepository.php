@@ -25,7 +25,7 @@ class DBALProductRepository implements ProductRepository
 
         $products = [];
 
-        foreach($data as $row) {
+        foreach ($data as $row) {
             $product = new Product();
             $product->fromArray($row);
 
