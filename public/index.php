@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\User\Controller\Login\Get as LoginGet;
@@ -51,6 +53,22 @@ $app->get(
         new InboxAgency\Catalog\Repository\DBALProductRepository(
             $container->get('conn')
         ),
+        $container->get('view')
+    )
+);
+
+$app->post(
+    '/cart',
+    new InboxAgency\Cart\Controller\Cart\Post(
+        new InboxAgency\Cart\Service\SessionCart(),
+        $container->get('view')
+    )
+);
+
+$app->get(
+    '/order/review',
+    new InboxAgency\Order\Controller\OrderReview\Get(
+        new InboxAgency\Cart\Service\SessionCart(),
         $container->get('view')
     )
 );

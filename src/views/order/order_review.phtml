@@ -1,0 +1,14 @@
+<?php if(count($products) > 0): ?>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+        </tr>
+        <?php foreach($products as $product): ?>
+            <tr>
+                <td><?= $product->getName() ?></td>
+                <td><?= $product->getPrice() ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<? endif; ?>

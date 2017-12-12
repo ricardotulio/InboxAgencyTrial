@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <button>Finalizar compra</button>
+        <a href="<?= getenv('BASE_URL') ?>/order/review">Finalizar compra</a>
             <div class="product-list row">
                 <?php foreach($products as $product): ?>
                     <div class="product col s4">
@@ -26,8 +26,11 @@
                             </div>
                             <div class="product-name col s12">
                                 <form class="row" action="<?= getenv('BASE_URL') ?>/cart" method="post">
+                                    <input type="hidden" name="id" value="<?= $product->getId() ?>">
+                                    <input type="hidden" name="name" value="<?= $product->getName() ?>">
+                                    <input type="hidden" name="price" value="<?= $product->getPrice() ?>">
                                     <button type="submit">Adicionar ao carrinho</button>
-                                </form>        
+                                </form>
                             </div>
                         </div>
                     </div>
