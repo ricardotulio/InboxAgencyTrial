@@ -2,13 +2,40 @@
 
 namespace InboxAgency\Catalog\Entity;
 
-class Product
+class Product implements \Serializable
 {
     private $id;
 
     private $name;
 
     private $price;
+
+    public function fromArray($data)
+    {
+        $this->id = $data['id'];
+        $this->name = $data['name'];
+        $this->price = $data['price'];
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'price' => $this->getPrice()
+        ];
+    }
+
+    public function serialize()
+    {
+        return serialize($this->toArray());
+    }
+
+    public function unserialize($data)
+    {
+        $values = unserialize($data);
+        $this->fromArray($values);
+    }
 
     public function getId()
     {
@@ -38,21 +65,5 @@ class Product
     public function setPrice($price)
     {
         $this->price = $price;
-    }
-
-    public function fromArray($array)
-    {
-        $this->setId($array['id']);
-        $this->setName($array['name']);
-        $this->setPrice($array['price']);
-    }
-
-    public function toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'name' => $this->getName(),
-            'price' => $this->getPrice()
-        ];
     }
 }

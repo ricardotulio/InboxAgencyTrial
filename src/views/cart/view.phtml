@@ -1,17 +1,19 @@
-<?php if(count($products) > 0): ?>
+<?php if(count($cartItems) > 0): ?>
     <table>
         <tr>
             <th>Nome</th>
             <th>Preço</th>
+            <th>Qty</th>
             <th></th>
         </tr>
-        <?php foreach($products as $product): ?>
+        <?php foreach($cartItems as $cartItem): ?>
             <tr>
-                <td><?= $product->getName() ?></td>
-                <td><?= $product->getPrice() ?></td>
+                <td><?= $cartItem->getProduct()->getName() ?></td>
+                <td><?= $cartItem->getProduct()->getPrice() ?></td>
+                <td><?= $cartItem->getQty() ?></td>
                 <td>
                     <form action="<?= getenv('BASE_URL') ?>/cart/remove/" method="post">
-                        <input type="hidden" name="id" value="<?= $product->getId() ?>" />
+                        <input type="hidden" name="id" value="<?= $cartItem->getId() ?>" />
                         <button type="submit">remover</button>
                     </form>
                 </td>

@@ -5,19 +5,19 @@ namespace InboxAgency\Order\Controller;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\Cart;
+use InboxAgency\Cart\Service\Cart as CartService;
 
 class OrderReview
 {
-    private $cart;
+    private $cartService;
 
     private $view;
 
     public function __construct(
-        Cart $cart,
+        CartService $cartService,
         PhpRenderer $view
     ) {
-        $this->cart = $cart;
+        $this->cartService = $cartService;
         $this->view = $view;
     }
 
@@ -25,21 +25,23 @@ class OrderReview
         Request $request,
         Response $response
     ) {
-        if (!$this->cart->hasProduct()) {
+        $cart = $this->cartService->getCart();
+
+        if (!$cart->hasProduct()) {
             return $response->withRedirect(
                 getenv('BASE_URL') . '/',
                 301
             );
         }
 
-        $products = $this->cart->getProducts();
+        $cartItems = $cart->getItems();
 
         $response = $this->view->render(
             $response,
             'order/review.phtml',
             [
-                'products' => $products,
-                'total' => $this->cart->getTotalAmount()
+                'cartItems' => $cartItems,
+                'total' => $cart->getCartAmount()
             ]
         );
 

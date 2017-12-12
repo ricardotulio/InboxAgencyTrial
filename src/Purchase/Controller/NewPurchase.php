@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use InboxAgency\Cart\Service\Cart;
+use InboxAgency\Purchase\Service\Purchase as PurchaseService;
 
 class NewPurchase
 {
@@ -14,9 +15,11 @@ class NewPurchase
 
     public function __construct(
         Cart $cart,
+        PurchaseService $service,
         PhpRenderer $view
     ) {
         $this->cart = $cart;
+        $this->service = $service;
         $this->view = $view;
     }
 
@@ -33,6 +36,9 @@ class NewPurchase
 
         $products = $this->cart->getProducts();
         $this->cart->cleanCart();
+
+        $this->service->sendEmail();
+        die();
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/purchase/success/',

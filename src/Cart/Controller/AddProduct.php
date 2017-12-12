@@ -5,20 +5,21 @@ namespace InboxAgency\Cart\Controller;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\Cart;
 use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Cart\Service\Cart as CartService;
+use InboxAgency\Cart\Entity\SimpleCartItem;
 
 class AddProduct
 {
-    private $cart;
+    private $service;
 
     private $view;
 
     public function __construct(
-        Cart $cart,
+        CartService $service,
         PhpRenderer $view
     ) {
-        $this->cart = $cart;
+        $this->service = $service;
         $this->view = $view;
     }
 
@@ -31,7 +32,12 @@ class AddProduct
         $product = new Product();
         $product->fromArray($data);
 
-        $this->cart->addProduct($product);
+        $cartItem = new SimpleCartItem($product);
+
+        $cart = $this->service->getCart();
+        $cart->addCartItem($cartItem);
+
+        $this->service->persistCart($cart);
 
         return $response->withRedirect('/cart/', 301);
     }

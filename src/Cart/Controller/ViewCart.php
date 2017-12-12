@@ -5,19 +5,19 @@ namespace InboxAgency\Cart\Controller;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\Cart;
+use InboxAgency\Cart\Service\Cart as CartService;
 
 class ViewCart
 {
-    private $cart;
+    private $service;
 
     private $view;
 
     public function __construct(
-        Cart $cart,
+        CartService $service,
         PhpRenderer $view
     ) {
-        $this->cart = $cart;
+        $this->service = $service;
         $this->view = $view;
     }
 
@@ -25,13 +25,14 @@ class ViewCart
         Request $request,
         Response $response
     ) {
-        $products = $this->cart->getProducts();
+        $cart = $this->service->getCart();
+        $cartItems = $cart->getCartItems();
 
         $response = $this->view->render(
             $response,
             'cart/view.phtml',
             [
-                'products' => $products
+                'cartItems' => $cartItems
             ]
         );
 

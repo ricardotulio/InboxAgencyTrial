@@ -54,6 +54,11 @@ $app->post(
 );
 
 $app->get(
+    '/logout/',
+    new InboxAgency\User\Controller\Logout()
+);
+
+$app->get(
     '/',
     new InboxAgency\Catalog\Controller\Catalog\Catalog(
         new InboxAgency\Catalog\Repository\DBALProductRepository(
@@ -99,6 +104,7 @@ $app->post(
     '/purchase/',
     new InboxAgency\Purchase\Controller\NewPurchase(
         new InboxAgency\Cart\Service\SessionCart(),
+        new InboxAgency\Purchase\Service\Purchase(),
         $container->get('view')
     )
 );

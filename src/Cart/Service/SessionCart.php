@@ -3,54 +3,22 @@
 namespace InboxAgency\Cart\Service;
 
 use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Cart\Entity\Cart as CartEntity;
+use InboxAgency\Cart\Entity\SimpleCart as SimpleCartEntity;
 
 class SessionCart implements Cart
 {
-    public function hasProduct()
+    public function getCart()
     {
-        return count($_SESSION['cart']) > 0;
-    }
-
-    public function addProduct($product)
-    {
-        $_SESSION['cart'][$product->getId()] = $product->toArray();
-    }
-
-    public function getProducts()
-    {
-        $products = [];
-
-        foreach ($_SESSION['cart'] as $productData) {
-            $product = new Product();
-            $product->fromArray($productData);
-
-            $products[$product->getId()] = $product;
+        if (isset($_SESSION['cart'])) {
+            return unserialize($_SESSION['cart']);
         }
 
-        return $products;
+        return new SimpleCartEntity();
     }
 
-    public function removeProduct($product)
+    public function persistCart(CartEntity $cart)
     {
-        unset($_SESSION['cart'][$product->getId()]);
-    }
-
-    public function cleanCart()
-    {
-        $_SESSION['cart'] = [];
-    }
-
-    public function getTotalAmount()
-    {
-        $total = 0;
-
-        foreach ($_SESSION['cart'] as $productData) {
-            $product = new Product();
-            $product->fromArray($productData);
-
-            $total += $product->getPrice();
-        }
-
-        return $total;
+        $_SESSION['cart'] = serialize($cart);
     }
 }

@@ -2,17 +2,11 @@
 
 namespace InboxAgency\Cart\Service;
 
+use InboxAgency\Cart\Entity\Cart as CartEntity;
+
 interface Cart
 {
-    public function hasProduct();
+    public function getCart();
 
-    public function addProduct($product);
-
-    public function removeProduct($product);
-
-    public function getProducts();
-
-    public function cleanCart();
-
-    public function getTotalAmount();
+    public function persistCart(CartEntity $cart);
 }

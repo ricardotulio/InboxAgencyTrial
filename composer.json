@@ -16,7 +16,8 @@
         "slim/slim": "^3.0",
         "robmorgan/phinx": "^0.9",
         "slim/php-view": "^2.2",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "phpmailer/phpmailer": "^6.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",
