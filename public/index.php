@@ -48,6 +48,9 @@ $app->post(
 $app->get(
     '/',
     new InboxAgency\Catalog\Controller\Catalog\Get(
+        new InboxAgency\Catalog\Repository\DBALProductRepository(
+            $container->get('conn')
+        ),
         $container->get('view')
     )
 );
