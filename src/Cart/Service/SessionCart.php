@@ -6,6 +6,11 @@ use InboxAgency\Catalog\Entity\Product;
 
 class SessionCart implements Cart
 {
+    public function hasProduct()
+    {
+        return count($_SESSION['cart']) > 0;
+    }
+
     public function addProduct($product)
     {
         $_SESSION['cart'][$product->getId()] = $product->toArray();

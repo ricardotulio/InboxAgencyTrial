@@ -17,6 +17,26 @@ class SessionCartText extends TestCase
     /**
      * @test
      */
+    public function mustVerifyIfHasProduct()
+    {
+        $product = new Product();
+        $product->setId(1);
+        $product->setName('Celular');
+        $product->setPrice(10.2);
+
+        $sessionCart = new SessionCart();
+        $sessionCart->addProduct($product);
+
+        $this->assertTrue($sessionCart->hasProduct());
+
+        $sessionCart->removeProduct($product);
+
+        $this->assertFalse($sessionCart->hasProduct());
+    }
+
+    /**
+     * @test
+     */
     public function mustAddProductToCart()
     {
         $product = new Product();
