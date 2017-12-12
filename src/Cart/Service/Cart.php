@@ -13,4 +13,6 @@ interface Cart
     public function getProducts();
 
     public function cleanCart();
+
+    public function getTotalPrice();
 }

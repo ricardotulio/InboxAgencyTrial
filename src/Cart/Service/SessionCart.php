@@ -39,4 +39,18 @@ class SessionCart implements Cart
     {
         $_SESSION['cart'] = [];
     }
+
+    public function getTotalPrice()
+    {
+        $total = 0;
+
+        foreach ($_SESSION['cart'] as $productData) {
+            $product = new Product();
+            $product->fromArray($productData);
+
+            $total += $product->getPrice();
+        }
+
+        return $total;
+    }
 }

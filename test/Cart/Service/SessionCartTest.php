@@ -129,4 +129,38 @@ class SessionCartText extends TestCase
 
         $this->assertCount(0, $sessionCart->getProducts());
     }
+
+    /**
+     * @test
+     */
+    public function mustCalculateTotalPriceFromCart()
+    {
+        $product1 = new Product();
+        $product1->setId(1);
+        $product1->setName('Celular');
+        $product1->setPrice(10.2);
+
+        $product2 = new Product();
+        $product2->setId(2);
+        $product2->setName('Notebook');
+        $product2->setPrice(10.2);
+
+        $product3 = new Product();
+        $product3->setId(3);
+        $product3->setName('Qualquer coisa');
+        $product3->setPrice(10.2);
+
+        $sessionCart = new SessionCart();
+        $sessionCart->addProduct($product1);
+        $sessionCart->addProduct($product2);
+        $sessionCart->addProduct($product3);
+
+        $expectedAmount = $product1->getPrice() + $product2->getPrice()
+            + $product3->getPrice();
+
+        $this->assertEquals(
+            $expectedAmount,
+            $sessionCart->getTotalPrice()
+        );
+    }
 }
