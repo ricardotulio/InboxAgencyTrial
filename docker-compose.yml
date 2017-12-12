@@ -13,8 +13,14 @@ services:
             - php
 
     php:
-        image: php:5.6-fpm-alpine
+        build: build/php
         env_file: .env
+        volumes:
+            - ./:/usr/share/nginx/html/
+        working_dir: /usr/share/nginx/html/
+
+    composer:
+        image: composer/composer:php5
         volumes:
             - ./:/usr/share/nginx/html/
         working_dir: /usr/share/nginx/html/
