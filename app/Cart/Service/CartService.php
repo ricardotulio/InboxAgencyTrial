@@ -5,7 +5,7 @@ namespace InboxAgency\Cart\Service;
 use InboxAgency\Session\SessionInterface;
 use InboxAgency\Cart\Entity\Cart;
 use InboxAgency\Cart\Entity\CartItem;
-Use InboxAgency\Catalog\Entity\ProductInterface;
+use InboxAgency\Catalog\Entity\ProductInterface;
 
 class CartService
 {
