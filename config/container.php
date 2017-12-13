@@ -40,8 +40,20 @@ $container['service_cart'] = function($container) {
     return new InboxAgency\Cart\Service\SessionCart();
 };
 
+$container['qeue_connection'] = function($container) use ($config) {
+    return new PhpAmqpLib\Connection\AMQPStreamConnection(
+        $config['qeue']['host'],
+        $config['qeue']['port'],
+        $config['qeue']['user'],
+        $config['qeue']['pass']
+    );
+};
+
 $container['service_purchase'] = function($container) {
-    return new InboxAgency\Purchase\Service\Purchase();
+    return new InboxAgency\Purchase\Service\Purchase(
+        $container->get('qeue_connection'),
+        $container->get('view')
+    );
 };
 
 $container['ctrl_login_form'] = function($container) {

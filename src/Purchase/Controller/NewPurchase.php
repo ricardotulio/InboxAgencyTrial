@@ -6,6 +6,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Purchase\Service\Purchase as PurchaseService;
+use InboxAgency\User\Entity\User;
+use InboxAgency\Purchase\Entity\Purchase;
 
 class NewPurchase
 {
@@ -37,10 +39,18 @@ class NewPurchase
             );
         }
 
+        $user = new User();
+        $user->setEmail('ledo.tulio@gmail.com');
+
+        $purchase = new Purchase(
+            $user,
+            $cart
+        );
+
+        $this->purchaseService->finishPurchase($purchase);
+
         $cart->cleanCart();
         $this->cartService->persistCart($cart);
-
-        $this->purchaseService->sendEmail();
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/purchase/success/',

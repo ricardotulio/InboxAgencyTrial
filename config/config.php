@@ -23,5 +23,11 @@ return [
             __DIR__ . '/../src/views/'
         ],
         'cache' => false
+    ],
+    'qeue' => [
+        'host' => getenv('QEUE_HOST'),
+        'port' => getenv('QEUE_PORT'),
+        'user' => getenv('QEUE_USER'),
+        'pass' => getenv('QEUE_PASS')
     ]
 ];

@@ -8,7 +8,7 @@ To run this project just run commands below:
 
 ```
 $ docker-compose up -d
-$ docker-compose run composer install
+$ docker-compose run composer install --ignore-platform-reqs
 $ docker-compose exec php vendor/bin/phinx migrate
 $ docker-compose exec php vendor/bin/phinx seed:run
 ```
