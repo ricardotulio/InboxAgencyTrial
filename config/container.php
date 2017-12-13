@@ -158,7 +158,24 @@ $container['ctrl_currency_setcurrency'] = function($container) {
 };
 
 $container['app'] = function($container) {
-    return new \Slim\App($container);
+    $app = new \Slim\App($container);
+
+    $app->add(new InboxAgency\User\Middleware\Authorizator(
+        new InboxAgency\User\Service\SessionAuthorizator()
+    ));
+
+    $app->add(new InboxAgency\Session\SessionMiddleware(
+        $container->get('session')
+    ));
+
+    $routes = require_once __DIR__ . '/routes.php';
+
+    foreach ($routes as $route) {
+        $app->$route['method']($route['path'], $route['controller'])
+            ->setName($route['name']);
+    }
+
+    return $app;
 };
 
 $container['session'] = function($container) {
