@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Produtos</h1>
+<h1>Products</h1>
 <hr />
 <div class="product-list row">
 {% for product in products %}
@@ -17,7 +17,7 @@
             <div class="card-action center-align">
                 <form action="{{ path_for('cart.add') }}" method="post">
                     <input type="hidden" id="id" name="id" value="{{ product.id }}">
-                    <button class="btn" type="submit"><i class="material-icons left">shopping_cart</i>Comprar</button>
+                    <button class="btn" type="submit"><i class="material-icons left">shopping_cart</i>Buy</button>
                 </form>
             </div>
         </div>

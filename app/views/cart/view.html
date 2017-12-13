@@ -2,14 +2,14 @@
 
 {% block content %}
 {% if cart.cartItems %}
-<h1>Seu carrinho</h1>
+<h1>Cart</h1>
 <hr />
 <table class="striped responsive-table">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Quantidade</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
             <th>Total</th>
         </tr>
     </thead>
@@ -32,7 +32,7 @@
     <tfoot>
         <tr>
             <td>
-                <a class="btn" href="{{ path_for('order.review') }}"><i class="material-icons left">shopping_cart</i>Finalizar compra</a>
+                <a class="btn" href="{{ path_for('order.review') }}"><i class="material-icons left">shopping_cart</i>Finish</a>
             </td>
             <td colspan="4" class="valign-wrapper">
                 <i class="small material-icons right-align">refresh</i>
@@ -42,6 +42,6 @@
     </tfoot>
 </table>
 {% else %}
-<h1>Não há produtos no carrinho.</h1>
+<h1>Have no products into cart.</h1>
 {% endif %}
 {% endblock %}

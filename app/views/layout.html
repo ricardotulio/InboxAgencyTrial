@@ -17,7 +17,7 @@
                         <div class="input-field">
                             <form id="currency-form" name="currency-form" action="{{ path_for('currency.set') }}" method="post">
                                 <select id="currency" name="currency" onchange="javascript: document.getElementById('currency-form').submit()">
-                                    <option value="" disabled selected>Escolha a moeda</option>
+                                    <option value="" disabled selected>Select currency</option>
                                     <option value="EUR">EUR</option>
                                     <option value="BRL">BRL</option>
                                     <option value="USD">USD</option>
@@ -25,8 +25,8 @@
                             </form>
                         </div>
                     </li>
-                    <li><a href="{{ path_for('cart.view') }}">Carrinho</a></li>
-                    <li><a href="{{ path_for('user.logout') }}">Sair</a></li>
+                    <li><a href="{{ path_for('cart.view') }}">Cart</a></li>
+                    <li><a href="{{ path_for('user.logout') }}">Logout</a></li>
                 </ul>
             </div>
         </nav>
