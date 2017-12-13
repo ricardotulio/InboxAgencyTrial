@@ -25,9 +25,20 @@ class Currency
         ],
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Session $session)
     {
         $this->session = $session;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getCurrencies()
+    {
+        return $this->currencies;
     }
 
     public function set($code)
