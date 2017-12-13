@@ -13,9 +13,9 @@ The propose of this project is provide an webstore containing a basic login, hom
 
 First, copy `.env.example` to `.env` and set smtp environments. Prefer to use gmail account.
 
-### Receving e-mails from worker
-
-To receive emails sent by worker, use a valid e-mail into `db/seeds/UserSeeder.php`.
+```
+If you wanto to receive emails sent by worker, use a valid e-mail into db/seeds/UserSeeder.php.
+```
 
 After this, just run commands below:
 
