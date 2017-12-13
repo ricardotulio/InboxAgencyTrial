@@ -20,6 +20,8 @@ class UserTestService extends TestCase
 
         $userService = new UserService($session, $repository);
 
+        $email = 'john@due.com';
+        $password = '1234';
         $user->method('authenticate')->willReturn(true);
 
         $repository->expects($this->once())
