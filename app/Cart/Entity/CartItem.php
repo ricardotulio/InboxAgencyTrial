@@ -4,19 +4,48 @@ namespace InboxAgency\Cart\Entity;
 
 use InboxAgency\Catalog\Entity\ProductInterface;
 
-interface CartItem
+class CartItem implements CartItemInterface
 {
-    public function __construct(ProductInterface $product, $qty);
+    private $id;
 
-    public function getId();
+    private $product;
 
-    public function getProduct();
+    private $qty;
 
-    public function getQty();
+    public function __construct(ProductInterface $product, $qty = 1)
+    {
+        $this->id = $product->getId();
+        $this->product = $product;
+        $this->qty = $qty;
+    }
 
-    public function incrementQty();
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    public function getProductPrice();
+    public function getProduct()
+    {
+        return $this->product;
+    }
 
-    public function getItemAmount();
+    public function getQty()
+    {
+        return $this->qty;
+    }
+
+    public function incrementQty()
+    {
+        $this->qty++;
+    }
+
+    public function getProductPrice()
+    {
+        return $this->getProduct()->getPrice();
+    }
+
+    public function getItemAmount()
+    {
+        return $this->getQty() * $this->getProductPrice();
+    }
 }

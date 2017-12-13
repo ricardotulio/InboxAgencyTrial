@@ -3,8 +3,8 @@
 namespace InboxAgency\Cart\Service;
 
 use InboxAgency\Session\Session;
-use InboxAgency\Cart\Entity\SimpleCart;
-use InboxAgency\Cart\Entity\SimpleCartItem;
+use InboxAgency\Cart\Entity\Cart;
+use InboxAgency\Cart\Entity\CartItem;
 Use InboxAgency\Catalog\Entity\ProductInterface;
 
 class CartService
@@ -24,7 +24,7 @@ class CartService
         $cart = $this->session->get('cart');
 
         if ($cart == null) {
-            $cart = new SimpleCart();
+            $cart = new Cart();
         }
 
         return $cart;
@@ -34,7 +34,7 @@ class CartService
     {
         $cart = $this->getCart();
 
-        $cart->addCartItem(new SimpleCartItem($product, $qty));
+        $cart->addCartItem(new CartItem($product, $qty));
         $this->session->set('cart', $cart);
     }
 

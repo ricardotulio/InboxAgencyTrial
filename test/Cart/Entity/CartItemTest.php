@@ -3,7 +3,7 @@
 namespace InboxAgency\Cart\Entity;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Cart\Entity\SimpleCartItem;
+use InboxAgency\Cart\Entity\CartItem;
 use InboxAgency\Catalog\Entity\Product;
 
 class SimpleCartItemTest extends TestCase
@@ -18,7 +18,7 @@ class SimpleCartItemTest extends TestCase
         $product = $this->createMock(Product::class);
         $product->method('getPrice')->willReturn($price);
 
-        $cartItem = new SimpleCartItem($product);
+        $cartItem = new CartItem($product);
 
         $this->assertEquals($price, $cartItem->getProductPrice());
     }
@@ -33,7 +33,7 @@ class SimpleCartItemTest extends TestCase
         $product = $this->createMock(Product::class);
         $product->method('getPrice')->willReturn($price);
 
-        $cartItem = new SimpleCartItem($product);
+        $cartItem = new CartItem($product);
         $cartItem->incrementQty();
 
         $this->assertEquals(2, $cartItem->getQty());
@@ -51,7 +51,7 @@ class SimpleCartItemTest extends TestCase
         $product = $this->createMock(Product::class);
         $product->method('getPrice')->willReturn($price);
 
-        $cartItem = new SimpleCartItem($product, $qty);
+        $cartItem = new CartItem($product, $qty);
 
         $this->assertEquals($expectedAmount, $cartItem->getItemAmount());
     }

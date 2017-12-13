@@ -2,17 +2,52 @@
 
 namespace InboxAgency\Cart\Entity;
 
-interface Cart
+class Cart implements CartInterface
 {
-    public function addCartItem(CartItem $item);
+    private $items;
+    
+    public function __construct()
+    {
+        $this->items = [];
+    }
 
-    public function removeCartItem($id);
+    public function addCartItem(CartItem $item)
+    {
+        if (!isset($this->items[$item->getId()])) {
+            return $this->items[$item->getId()] = $item;
+        }
 
-    public function getCartItems();
+        return $this->items[$item->getId()]->incrementQty();
+    }
 
-    public function hasItems();
+    public function removeCartItem($id)
+    {
+        unset($this->items[$id]);
+    }
 
-    public function cleanCart();
+    public function getCartItems()
+    {
+        return $this->items;
+    }
 
-    public function getCartAmount();
+    public function hasItems()
+    {
+        return count($this->items) > 0;
+    }
+
+    public function cleanCart()
+    {
+        $this->items = [];
+    }
+
+    public function getCartAmount()
+    {
+        $amount = 0;
+
+        foreach ($this->getCartItems() as $item) {
+            $amount += $item->getItemAmount();
+        }
+
+        return $amount;
+    }
 }

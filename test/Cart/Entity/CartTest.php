@@ -4,14 +4,14 @@ namespace InboxAgency\Cart\Entity;
 
 use PHPUnit\Framework\TestCase;
 
-class SimpleCartTest extends TestCase
+class CartTest extends TestCase
 {
     /**
      * @test
      */
     public function mustAddCartItem()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem = $this->createMock(CartItem::class);
         $cartItem->method('getId')->willReturn(10);
@@ -29,7 +29,7 @@ class SimpleCartTest extends TestCase
      */
     public function mustIncrementIfHasItem()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem = $this->createMock(CartItem::class);
         $cartItem->method('getId')->willReturn(10);
@@ -52,7 +52,7 @@ class SimpleCartTest extends TestCase
         $cartItem2 = $this->createMock(CartItem::class);
         $cartItem2->method('getId')->willReturn($cartItem2Id);
 
-        $cart = new SimpleCart();
+        $cart = new Cart();
         $cart->addCartItem($cartItem1);
         $cart->addCartItem($cartItem2);
 
@@ -69,7 +69,7 @@ class SimpleCartTest extends TestCase
      */
     public function mustRetrieveCartItems()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem1Id = 57;
         $cartItem1 = $this->createMock(CartItem::class);
@@ -104,7 +104,7 @@ class SimpleCartTest extends TestCase
      */
     public function mustCleanCart()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem1 = $this->createMock(CartItem::class);
         $cartItem1->method('getId')->willReturn(30);
@@ -132,7 +132,7 @@ class SimpleCartTest extends TestCase
      */
     public function mustCalculateCartAmount()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem1 = $this->createMock(CartItem::class);
         $cartItem1->method('getId')->willReturn(30);
@@ -158,7 +158,7 @@ class SimpleCartTest extends TestCase
      */
     public function mustVerifyIfHasItems()
     {
-        $cart = new SimpleCart();
+        $cart = new Cart();
 
         $cartItem = $this->createMock(CartItem::class);
         $cartItem->method('getId')->willReturn(30);
