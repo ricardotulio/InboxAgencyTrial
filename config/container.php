@@ -50,7 +50,7 @@ $container['service_user'] = function($container) {
 };
 
 $container['service_currency'] = function($container) {
-    return new InboxAgency\Currency\Service\Currency(
+    return new InboxAgency\Currency\Service\CurrencyService(
         $container->get('session')
     );
 };

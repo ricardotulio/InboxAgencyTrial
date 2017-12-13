@@ -5,7 +5,7 @@ namespace InboxAgency\Currency\Service;
 use PHPUnit\Framework\TestCase;
 use InboxAgency\Session\Session;
 
-class CurrencyTest extends TestCase
+class CurrencyServiceTest extends TestCase
 {
     /**
      * @test
@@ -13,9 +13,9 @@ class CurrencyTest extends TestCase
     public function mustSetCurrency()
     {
         $session = $this->createMock(Session::class);
-        $service = new Currency($session);
+        $currencyService = new CurrencyService($session);
 
-        $currencies = $service->getCurrencies();
+        $currencies = $currencyService->getCurrencies();
         $currencyCode = 'BRL';
 
         $session->expects($this->once())
@@ -26,7 +26,7 @@ class CurrencyTest extends TestCase
             );
 
 
-        $service->set($currencyCode);
+        $currencyService->set($currencyCode);
     }
 
     /**
@@ -35,9 +35,9 @@ class CurrencyTest extends TestCase
     public function mustRetrieveCurrency()
     {
         $session = $this->createMock(Session::class);
-        $service = new Currency($session);
+        $currencyService = new CurrencyService($session);
 
-        $currencies = $service->getCurrencies();
+        $currencies = $currencyService->getCurrencies();
         $currencyCode = 'BRL';
 
         $session->expects($this->once())
@@ -45,7 +45,7 @@ class CurrencyTest extends TestCase
             ->with($this->equalTo('currency'))
             ->willReturn($currencies[$currencyCode]);
 
-        $this->assertEquals($currencies[$currencyCode], $service->get());
+        $this->assertEquals($currencies[$currencyCode], $currencyService->get());
     }
 
     /**
@@ -54,13 +54,13 @@ class CurrencyTest extends TestCase
     public function mustRetrieveDefaultCurrency()
     {
         $session = $this->createMock(Session::class);
-        $service = new Currency($session);
+        $currencyService = new CurrencyService($session);
 
-        $currencies = $service->getCurrencies();
+        $currencies = $currencyService->getCurrencies();
 
         $this->assertEquals(
-            $currencies[Currency::DEFAULT_CURRENCY],
-            $service->get()
+            $currencies[CurrencyService::DEFAULT_CURRENCY],
+            $currencyService->get()
         );
     }
 }

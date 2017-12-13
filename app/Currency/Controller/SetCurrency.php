@@ -4,18 +4,18 @@ namespace InboxAgency\Currency\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Currency\Service\Currency as CurrencyService;
+use InboxAgency\Currency\Service\CurrencyServiceInterface as CurrencyService;
 
 /**
  * @codeCoverageIgnore
  */
 class SetCurrency
 {
-    private $service;
+    private $currencyService;
 
-    public function __construct(CurrencyService $service)
+    public function __construct(CurrencyService $currencyService)
     {
-        $this->service = $service;
+        $this->currencyService = $currencyService;
     }
 
     public function __invoke(
@@ -24,7 +24,7 @@ class SetCurrency
     ) {
         $data = $request->getParsedBody();
 
-        $this->service->set($data['currency']);
+        $this->currencyService->set($data['currency']);
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/',

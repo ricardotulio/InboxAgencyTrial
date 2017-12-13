@@ -4,7 +4,7 @@ namespace InboxAgency\Currency\Service;
 
 use InboxAgency\Session\Session;
 
-class Currency
+class CurrencyService implements CurrencyServiceInterface
 {
     const DEFAULT_CURRENCY = 'BRL';
 
