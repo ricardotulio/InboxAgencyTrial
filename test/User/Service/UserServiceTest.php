@@ -24,7 +24,6 @@ class UserTestService extends TestCase
 
         $repository->expects($this->once())
             ->method('findByEmail')
-            ->with($this->equalTo($email))
             ->willReturn($user);
 
         $session->expects($this->once())
