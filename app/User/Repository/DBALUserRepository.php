@@ -5,6 +5,9 @@ namespace InboxAgency\User\Repository;
 use Doctrine\DBAL\Connection;
 use InboxAgency\User\Entity\User;
 
+/**
+ * @codeCoverageIgnore
+ */
 class DBALUserRepository implements UserRepository
 {
     private $conn;

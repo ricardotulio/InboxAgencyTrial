@@ -5,6 +5,9 @@ namespace InboxAgency\Catalog\Repository;
 use Doctrine\DBAL\Connection;
 use InboxAgency\Catalog\Entity\Product;
 
+/**
+ * @codeCoverageIgnore
+ */
 class DBALProductRepository implements ProductRepository
 {
     private $conn;
