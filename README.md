@@ -27,20 +27,20 @@ $ docker-compose exec php vendor/bin/phinx migrate
 $ docker-compose exec php vendor/bin/phinx seed:run
 ```
 
-After this, access `http://localhost:8088`.
+After this, access `http://localhost:8080` using email `teste@teste.com` and password `123456`.
 
 ## Checking emails sent by the worker
 
-`docker-compose logs -f mail_worker`
+`$ docker-compose logs -f mail_worker`
 
 ## Code Sniffer
 
-`vendor/bin/phpcs --standard=PSR2 app/`
+`$ docker-compose exec php vendor/bin/phpcs --standard=PSR2 app/`
 
 ## Mess Detector
 
-`vendor/bin/phpmd app/ text cleancode`
+`$ docker-compose exec php vendor/bin/phpmd app/ text cleancode`
 
 ## Testing
 
-`/vendor/bin/phpunit`
+`$ docker-compose exec php /vendor/bin/phpunit`
