@@ -1,6 +1,6 @@
 # Inbox Agency Trial Challenge
 
-[![Build Status](https://travis-ci.org/ricardotulio/InboxAgencyTrail.svg?branch=master)](https://travis-ci.org/ricardotulio/InboxAgencyTrail)
+[![Build Status](https://travis-ci.org/ricardotulio/InboxAgencyTrail.svg?branch=master)](https://travis-ci.org/ricardotulio/InboxAgencyTrail)[![Coverage Status](https://coveralls.io/repos/github/ricardotulio/InboxAgencyTrail/badge.svg?branch=master)](https://coveralls.io/github/ricardotulio/InboxAgencyTrail?branch=master)
 
 The propose of this project is provide an webstore containing a basic login, home page and purchase page.
 
