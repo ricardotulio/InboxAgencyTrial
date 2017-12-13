@@ -12,7 +12,7 @@
             </div>
             <div class="card-content right-align">
                 <div>{{ product.name }}</div>
-                <div class="card-title">R$ {{ product.price|number_format(2, ',', '.') }}</div>
+                <div class="card-title">{{ product.price|currency }}</div>
             </div>
             <div class="card-action center-align">
                 <form action="{{ path_for('cart.add') }}" method="post">

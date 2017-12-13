@@ -20,9 +20,9 @@ class SimpleCart implements Cart
         return $this->items[$item->getId()]->incrementQty();
     }
 
-    public function removeCartItem(CartItem $item)
+    public function removeCartItem($id)
     {
-        unset($this->items[$item->getId()]);
+        unset($this->items[$id]);
     }
 
     public function getCartItems()

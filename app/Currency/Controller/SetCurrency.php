@@ -1,16 +1,17 @@
 <?php
 
-namespace InboxAgency\User\Controller;
+namespace InboxAgency\Currency\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\User as UserService;
+use InboxAgency\Currency\Service\Currency as CurrencyService;
 
-class Logout
+class SetCurrency
 {
     private $service;
 
-    public function __construct(UserService $service) {
+    public function __construct(CurrencyService $service)
+    {
         $this->service = $service;
     }
 
@@ -18,10 +19,12 @@ class Logout
         Request $request,
         Response $response
     ) {
-        $this->service->logout();
+        $data = $request->getParsedBody();
+
+        $this->service->set($data['currency']);
 
         return $response->withRedirect(
-            getenv('BASE_URL') . '/login/',
+            getenv('BASE_URL') . '/',
             301
         );
     }

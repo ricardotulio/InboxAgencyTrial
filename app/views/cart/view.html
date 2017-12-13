@@ -17,9 +17,9 @@
         {% for cartItem in cart.cartItems %}
         <tr>
             <td>{{ cartItem.product.name }}</td>
-            <td>R$ {{ cartItem.product.price|number_format(2, ',', '.') }}</td>
+            <td>{{ cartItem.product.price|currency }}</td>
             <td>{{ cartItem.qty }}</td>
-            <td>R$ {{ cartItem.itemAmount|number_format(2, ',', '.') }}</td>
+            <td>{{ cartItem.itemAmount|currency}}</td>
             <td class="right-align">
                 <form name="remove_product" action="{{ path_for('cart.remove') }}" method="post">
                     <input type="hidden" name="id" value="{{ cartItem.id }}" />
@@ -36,7 +36,7 @@
             </td>
             <td colspan="4" class="valign-wrapper">
                 <i class="small material-icons right-align">refresh</i>
-                <span class="flow-text right-align">R$ {{ cart.cartAmount|number_format(2, ',', '.') }}</span>
+                <span class="flow-text right-align">{{ cart.cartAmount|currency }}</span>
             </td>
         </tr>
     </tfoot>

@@ -34,13 +34,13 @@
                 {% for cartItem in cart.cartItems %}
                     <tr>
                         <td>{{ cartItem.product.name }}</td>
-                        <td>R$ {{ cartItem.itemAmount|number_format(2, ',', '.')  }}</td>
+                        <td>{{ cartItem.itemAmount|currency }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
                 <tr>
                     <td>Total</td>
-                    <td>R$ {{ cart.cartAmount|number_format(2, ',', '.') }}</td>
+                    <td>{{ cart.cartAmount|currency }}</td>
                 </tr>
             </table>
         </div>

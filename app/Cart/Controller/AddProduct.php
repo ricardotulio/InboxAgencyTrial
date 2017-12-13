@@ -32,12 +32,8 @@ class AddProduct
         $product = $this->productRepository->findById($data['id']);
 
         if ($product) {
-            $cartItem = new SimpleCartItem($product);
-            
-            $cart = $this->service->getCart();
-            $cart->addCartItem($cartItem);
-            $this->service->persistCart($cart);
-            
+            $this->service->addProduct($product);
+
             return $response->withRedirect('/cart/', 301);
         }
 

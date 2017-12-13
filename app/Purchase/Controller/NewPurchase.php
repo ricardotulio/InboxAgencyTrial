@@ -49,8 +49,7 @@ class NewPurchase
 
         $this->purchaseService->finishPurchase($purchase);
 
-        $cart->cleanCart();
-        $this->cartService->persistCart($cart);
+        $this->cartService->cleanCart();
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/purchase/success/',

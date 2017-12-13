@@ -13,16 +13,16 @@ Muito obrigado pela compra! Volte sempre :)
     {% for cartItem in purchase.cart.cartItems %}
         <tr>
             <td>{{ cartItem.product.name }}</td>
-            <td>R$ {{ cartItem.product.price|number_format(2, ',', '.') }}</td>
+            <td>{{ cartItem.product.price|currency }}</td>
             <td>{{ cartItem.qty }}</td>
-            <td>R$ {{ cartItem.itemAmount|number_format(2, ',', '.') }}</td>
+            <td>{{ cartItem.itemAmount|currency }}</td>
         </tr>
     {% endfor %}
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3">Total</td>
-            <td>R$ {{ purchase.cart.cartAmount|number_format(2, ',', '.') }}</td>
+            <td>{{ purchase.cart.cartAmount|currency }}</td>
         </tr>
     </tfoot>
 </table>

@@ -37,7 +37,22 @@ $container['product_repository'] = function($container) {
 };
 
 $container['service_cart'] = function($container) {
-    return new InboxAgency\Cart\Service\SessionCart();
+    return new InboxAgency\Cart\Service\Cart(
+        $container->get('session')
+    );
+};
+
+$container['service_user'] = function($container) {
+    return new InboxAgency\User\Service\User(
+        $container->get('session'),
+        $container->get('user_repository')
+    );
+};
+
+$container['service_currency'] = function($container) {
+    return new InboxAgency\Currency\Service\Currency(
+        $container->get('session')
+    );
 };
 
 $container['qeue_connection'] = function($container) use ($config) {
@@ -64,13 +79,15 @@ $container['ctrl_login_form'] = function($container) {
 
 $container['ctrl_do_login'] = function($container) {
     return new \InboxAgency\User\Controller\DoLogin(
-        $container->get('user_repository'),
+        $container->get('service_user'),
         $container->get('view')
     );
 };
 
 $container['ctrl_logout'] = function($container) {
-    return new InboxAgency\User\Controller\Logout();
+    return new InboxAgency\User\Controller\Logout(
+        $container->get('service_user')
+    );
 };
 
 $container['ctrl_catalog'] = function($container) {
@@ -124,8 +141,18 @@ $container['ctrl_purchase_success'] = function($container) {
     );
 };
 
+$container['ctrl_currency_setcurrency'] = function($container) {
+    return new InboxAgency\Currency\Controller\SetCurrency(
+        $container->get('service_currency')
+    );
+};
+
 $container['app'] = function($container) {
     return new \Slim\App($container);
+};
+
+$container['session'] = function($container) {
+    return new \InboxAgency\Session\PHPSession();
 };
 
 return $container;

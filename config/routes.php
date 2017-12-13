@@ -61,4 +61,10 @@ return [
         'method' => 'get',
         'controller' => 'ctrl_purchase_success'
     ],
+    [
+        'name' => 'currency.set',
+        'path' => '/currency/',
+        'method' => 'post',
+        'controller' => 'ctrl_currency_setcurrency'
+    ],
 ];

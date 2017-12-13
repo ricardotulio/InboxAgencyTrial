@@ -4,18 +4,22 @@ namespace InboxAgency\Session;
 
 class PHPSession implements Session
 {
-    private $data;
-
-    public function __construct(&$data = $_SESSION)
-    {
-        $this->data = $data;
-    }
-
     public function get($key)
     {
+        if (isset($_SESSION[$key])) {
+            return unserialize($_SESSION[$key]);
+        }
+
+        return false;
     }
 
     public function set($key, $value)
     {
+        $_SESSION[$key] = serialize($value);
+    }
+
+    public function destroy()
+    {
+        $_SESSION = [];
     }
 }

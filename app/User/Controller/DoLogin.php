@@ -5,19 +5,19 @@ namespace InboxAgency\User\Controller;
 use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Repository\UserRepository;
+use InboxAgency\User\Service\User as UserService;
 
 class DoLogin
 {
-    private $repository;
+    private $service;
 
     private $view;
 
     public function __construct(
-        UserRepository $repository,
+        UserService $service,
         Twig $view
     ) {
-        $this->repository = $repository;
+        $this->service = $service;
         $this->view = $view;
     }
 
@@ -26,9 +26,8 @@ class DoLogin
         Response $response
     ) {
         $data = $request->getParsedBody();
-        $user = $this->repository->findByEmail($data['email']);
 
-        if (!$user || !$user->authenticate($data['password'])) {
+        if (!$this->service->login($data['email'], $data['password'])) {
             return $this->view->render(
                 $response,
                 'user/login.phtml',
@@ -37,8 +36,6 @@ class DoLogin
                 ]
             );
         }
-
-        $_SESSION['logged'] = true;
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/',

@@ -25,23 +25,19 @@ class OrderReview
         Request $request,
         Response $response
     ) {
-        $cart = $this->cartService->getCart();
-
-        if (!$cart->hasItems()) {
+        if (!$this->cartService->hasItems()) {
             return $response->withRedirect(
                 getenv('BASE_URL') . '/',
                 301
             );
         }
 
-        $response = $this->view->render(
+        return $this->view->render(
             $response,
             'order/review.html',
             [
-                'cart' => $cart
+                'cart' => $this->cartService->getCart()
             ]
         );
-
-        return $response;
     }
 }

@@ -27,13 +27,7 @@ class RemoveProduct
     ) {
         $data = $request->getParsedBody();
 
-        $product = new Product();
-        $product->fromArray($data);
-
-        $cart = $this->service->getCart();
-        $cart->removeCartItem(new SimpleCartItem($product));
-
-        $this->service->persistCart($cart);
+        $this->service->removeProduct($data['id']);
 
         return $response->withRedirect('/cart/', 301);
     }

@@ -8,19 +8,15 @@ use InboxAgency\User\Service\Authorizator as AuthorizatorService;
 
 class Authorizator
 {
-    private $service;
-
-    public function __construct(AuthorizatorService $service)
-    {
-        $this->service = $service;
-    }
-
     public function __invoke(
         Request $request,
         Response $response,
         $next
     ) {
-        if (!$this->service->hasAuthorized($request)) {
+        $session = $request->getAttribute('session');
+
+        if ($session->get('user') == null
+            && $request->getUri()->getPath() != '/login/') {
             return $response->withRedirect(
                 '/login/',
                 301
