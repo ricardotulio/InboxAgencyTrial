@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Catalog\Entity;
 
-class Product implements \Serializable
+class Product
 {
     private $id;
 
@@ -24,17 +24,6 @@ class Product implements \Serializable
             'name' => $this->getName(),
             'price' => $this->getPrice()
         ];
-    }
-
-    public function serialize()
-    {
-        return serialize($this->toArray());
-    }
-
-    public function unserialize($data)
-    {
-        $values = unserialize($data);
-        $this->fromArray($values);
     }
 
     public function getId()
