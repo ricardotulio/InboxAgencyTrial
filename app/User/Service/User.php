@@ -11,6 +11,9 @@ class User
 
     private $repository;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(
         Session $session,
         UserRepository $repository
