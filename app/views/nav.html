@@ -1,0 +1,22 @@
+<nav>
+    <div class="nav-wrapper container">
+        <a href="{{ path_for('catalog.view') }}" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <div class="input-field">
+                    <form id="currency-form" name="currency-form" action="{{ path_for('currency.set') }}" method="post">
+                        <select id="currency" name="currency" onchange="javascript: document.getElementById('currency-form').submit()">
+                            <option value="" disabled selected>Select currency</option>
+                            <option value="EUR">EUR</option>
+                            <option value="BRL">BRL</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </form>
+                </div>
+            </li>
+            <li><a href="{{ path_for('cart.view') }}">Cart</a></li>
+            <li><a href="{{ path_for('user.logout') }}">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
