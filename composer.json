@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "InboxAgency\\": "src/"
+            "InboxAgency\\": [ "app/", "lib/" ]
         }
     },
     "autoload-dev": {

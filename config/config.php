@@ -20,7 +20,7 @@ return [
     ],
     'view' => [
         'paths' => [
-            __DIR__ . '/../src/views/'
+            __DIR__ . '/../app/views/'
         ],
         'cache' => false
     ],
