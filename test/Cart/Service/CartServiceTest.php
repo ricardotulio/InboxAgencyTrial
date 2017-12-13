@@ -3,7 +3,7 @@
 namespace InboxAgency\Cart\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface as Session;
 use InboxAgency\Cart\Entity\Cart;
 use inboxAgency\Catalog\Entity\ProductInterface;
 

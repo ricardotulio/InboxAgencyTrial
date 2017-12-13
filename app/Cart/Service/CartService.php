@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Cart\Service;
 
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface;
 use InboxAgency\Cart\Entity\Cart;
 use InboxAgency\Cart\Entity\CartItem;
 Use InboxAgency\Catalog\Entity\ProductInterface;
@@ -14,7 +14,7 @@ class CartService
     /**
      * @codeCoverageIgnore
      */
-    public function __construct(Session $session)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }

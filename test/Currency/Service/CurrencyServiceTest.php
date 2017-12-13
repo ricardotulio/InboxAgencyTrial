@@ -3,7 +3,7 @@
 namespace InboxAgency\Currency\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface as Session;
 
 class CurrencyServiceTest extends TestCase
 {

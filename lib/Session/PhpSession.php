@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Session;
 
-class PHPSession implements Session
+class PhpSession implements SessionInterface
 {
     public function get($key)
     {

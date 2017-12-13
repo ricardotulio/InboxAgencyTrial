@@ -152,7 +152,7 @@ $container['app'] = function($container) {
 };
 
 $container['session'] = function($container) {
-    return new \InboxAgency\Session\PHPSession();
+    return new \InboxAgency\Session\PhpSession();
 };
 
 return $container;

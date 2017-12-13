@@ -15,12 +15,12 @@ class SessionMiddelwareTest extends TestCase
     {
         $request = $this->createMock(Request::class);
         $response = $this->createMock(Response::class);
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
 
         $request->expects($this->once())
             ->method('withAttribute')
             ->with(
-                $this->equalTo(Session::SESSION_ATTRIBUTE),
+                $this->equalTo(SessionInterface::SESSION_ATTRIBUTE),
                 $this->equalTo($session)
             );
 

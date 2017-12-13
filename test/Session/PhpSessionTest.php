@@ -4,14 +4,14 @@ namespace InboxAgency\Session;
 
 use PHPUnit\Framework\TestCase;
 
-class PHPSessionTest extends TestCase
+class PhpSessionTest extends TestCase
 {
     /**
      * @test
      */
     public function mustSetAndGetItem()
     {
-        $session = new PHPSession();
+        $session = new PhpSession();
 
         $item = new \stdClass;
         $item->id = 10;
@@ -28,7 +28,7 @@ class PHPSessionTest extends TestCase
      */
     public function mustReturnFalseWhenHasNoItem()
     {
-        $session = new PHPSession();
+        $session = new PhpSession();
 
         $this->assertFalse($session->get('bla'));
     }

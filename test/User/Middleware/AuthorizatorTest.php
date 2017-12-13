@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\UriInterface as Uri;
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface as Session;
 use InboxAgency\User\Entity\User;
 
 class AuthorizatorTest extends TestCase

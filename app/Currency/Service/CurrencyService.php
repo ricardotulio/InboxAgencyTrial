@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Currency\Service;
 
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface as Session;
 
 class CurrencyService implements CurrencyServiceInterface
 {

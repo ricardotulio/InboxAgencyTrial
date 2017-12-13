@@ -3,7 +3,7 @@
 namespace InboxAgency\User\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\Session;
+use InboxAgency\Session\SessionInterface as Session;
 use InboxAgency\User\Entity\UserInterface;
 use InboxAgency\User\Repository\UserRepositoryInterface;
 

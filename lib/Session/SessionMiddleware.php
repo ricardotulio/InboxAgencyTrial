@@ -9,7 +9,7 @@ class SessionMiddleware
 {
     private $session;
 
-    public function __construct(Session $session)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }
@@ -20,7 +20,7 @@ class SessionMiddleware
         $next
     ) {
         $request = $request->withAttribute(
-            Session::SESSION_ATTRIBUTE, 
+            SessionInterface::SESSION_ATTRIBUTE,
             $this->session
         );
 

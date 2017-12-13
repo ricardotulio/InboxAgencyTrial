@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Session;
 
-interface Session
+interface SessionInterface
 {
     const SESSION_ATTRIBUTE = 'session';
 
