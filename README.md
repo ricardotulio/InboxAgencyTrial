@@ -1,5 +1,7 @@
 # Inbox Agency Trial Challenge
 
+[![Build Status](https://travis-ci.org/ricardotulio/InboxAgencyTrail.svg?branch=master)](https://travis-ci.org/ricardotulio/InboxAgencyTrail)
+
 The propose of this project is provide an webstore containing a basic login, home page and purchase page.
 
 ## Running this project
