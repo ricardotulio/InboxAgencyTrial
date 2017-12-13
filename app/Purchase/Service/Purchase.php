@@ -89,7 +89,13 @@ class Purchase
 
         $channel->basic_qos(null, 1, null);
         $channel->basic_consume(
-            'mail_queue', '', false, true, false, false, $callback
+            'mail_queue',
+            '',
+            false,
+            true,
+            false,
+            false,
+            $callback
         );
 
         while (count($channel->callbacks)) {

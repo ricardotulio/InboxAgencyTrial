@@ -13,7 +13,8 @@ class Logout
 {
     private $service;
 
-    public function __construct(UserService $service) {
+    public function __construct(UserService $service)
+    {
         $this->service = $service;
     }
 
