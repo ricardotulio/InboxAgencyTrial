@@ -16,14 +16,18 @@ $ docker-compose exec php vendor/bin/phinx migrate
 $ docker-compose exec php vendor/bin/phinx seed:run
 ```
 
+## Checking emails sent by the worker
+
+`docker-compose logs -f mail_worker`
+
 ## Code Sniffer
 
-To run the Code Sniffer, just exec `vendor/bin/phpcs --standard=PSR2 app/`.
+`vendor/bin/phpcs --standard=PSR2 app/`.
 
 ## Mess Detector
 
-To run the Code Sniffer, just exec `vendor/bin/phpmd app/ text cleancode`.
+`vendor/bin/phpmd app/ text cleancode`.
 
 ## Testing
 
-To run the project tests, just exec `/vendor/bin/phpunit`.
+`/vendor/bin/phpunit`.
