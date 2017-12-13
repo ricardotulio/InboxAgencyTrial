@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Catalog\Entity;
 
-class Product
+class Product implements ProductInterface
 {
     private $id;
 

@@ -4,10 +4,10 @@ namespace InboxAgency\Cart\Service;
 
 use PHPUnit\Framework\TestCase;
 use InboxAgency\Session\Session;
-use InboxAgency\Cart\Entity\Cart as CartEntity;
-use inboxAgency\Catalog\Entity\Product;
+use InboxAgency\Cart\Entity\Cart;
+use inboxAgency\Catalog\Entity\ProductInterface;
 
-class CartTest extends TestCase
+class CartServiceTest extends TestCase
 {
     /**
      * @test
@@ -15,8 +15,8 @@ class CartTest extends TestCase
     public function mustCreateNewCartIfHasNoCartIntoSession()
     {
         $session = $this->createMock(Session::class);
-        $service = new Cart($session);
-        $cart = $service->getCart();
+        $cartService = new CartService($session);
+        $cart = $cartService->getCart();
 
         $this->assertInstanceOf(\InboxAgency\Cart\Entity\Cart::class, $cart);
     }
@@ -27,7 +27,7 @@ class CartTest extends TestCase
     public function mustRetrieveCartFromSession()
     {
         $session = $this->createMock(Session::class);
-        $service = new Cart($session);
+        $cartService = new CartService($session);
 
         $cart = $this->createMock(Session::class);
         $session->expects($this->once())
@@ -35,7 +35,7 @@ class CartTest extends TestCase
             ->with($this->equalTo('cart'))
             ->willReturn($cart);
 
-        $this->assertSame($cart, $service->getCart());
+        $this->assertSame($cart, $cartService->getCart());
     }
 
     /**
@@ -44,8 +44,8 @@ class CartTest extends TestCase
     public function mustAddProductToCart()
     {
         $session = $this->createMock(Session::class);
-        $cart = $this->createMock(CartEntity::class);
-        $product = $this->createMock(Product::class);
+        $cart = $this->createMock(Cart::class);
+        $product = $this->createMock(ProductInterface::class);
 
         $session->expects($this->once())
             ->method('get')
@@ -65,8 +65,8 @@ class CartTest extends TestCase
         $product->method('getId')
             ->willReturn(10);
 
-        $service = new Cart($session);
-        $service->addProduct($product);
+        $cartService = new CartService($session);
+        $cartService->addProduct($product);
     }
 
 
@@ -76,7 +76,7 @@ class CartTest extends TestCase
     public function mustVerifyIfHasItems()
     {
         $session = $this->createMock(Session::class);
-        $cart = $this->createMock(CartEntity::class);
+        $cart = $this->createMock(Cart::class);
 
         $cart->expects($this->once())
             ->method('hasItems')
@@ -87,9 +87,9 @@ class CartTest extends TestCase
             ->with($this->equalTo('cart'))
             ->willReturn($cart);
 
-        $service = new Cart($session);
+        $cartService = new CartService($session);
 
-        $this->assertTrue($service->hasItems());
+        $this->assertTrue($cartService->hasItems());
     }
 
     /**
@@ -100,7 +100,7 @@ class CartTest extends TestCase
         $itemId = 10;
 
         $session = $this->createMock(Session::class);
-        $cart = $this->createMock(CartEntity::class);
+        $cart = $this->createMock(Cart::class);
 
         $cart->expects($this->once())
             ->method('removeCartItem')
@@ -111,8 +111,8 @@ class CartTest extends TestCase
             ->with($this->equalTo('cart'))
             ->willReturn($cart);
 
-        $service = new Cart($session);
-        $service->removeProduct($itemId);
+        $cartService = new CartService($session);
+        $cartService->removeProduct($itemId);
     }
 
     /**
@@ -121,7 +121,7 @@ class CartTest extends TestCase
     public function mustCleanCart()
     {
         $session = $this->createMock(Session::class);
-        $cart = $this->createMock(CartEntity::class);
+        $cart = $this->createMock(Cart::class);
 
         $cart->expects($this->once())
             ->method('cleanCart');
@@ -131,7 +131,7 @@ class CartTest extends TestCase
             ->with($this->equalTo('cart'))
             ->willReturn($cart);
 
-        $service = new Cart($session);
-        $service->cleanCart();
+        $cartService = new CartService($session);
+        $cartService->cleanCart();
     }
 }

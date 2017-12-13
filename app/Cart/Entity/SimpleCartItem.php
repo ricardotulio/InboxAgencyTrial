@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Cart\Entity;
 
-use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Catalog\Entity\ProductInterface;
 
 class SimpleCartItem implements CartItem
 {
@@ -12,7 +12,7 @@ class SimpleCartItem implements CartItem
 
     private $qty;
 
-    public function __construct(Product $product, $qty = 1)
+    public function __construct(ProductInterface $product, $qty = 1)
     {
         $this->id = $product->getId();
         $this->product = $product;

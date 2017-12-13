@@ -2,11 +2,11 @@
 
 namespace InboxAgency\Cart\Entity;
 
-use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Catalog\Entity\ProductInterface;
 
 interface CartItem
 {
-    public function __construct(Product $product, $qty);
+    public function __construct(ProductInterface $product, $qty);
 
     public function getId();
 

@@ -5,8 +5,9 @@ namespace InboxAgency\Cart\Service;
 use InboxAgency\Session\Session;
 use InboxAgency\Cart\Entity\SimpleCart;
 use InboxAgency\Cart\Entity\SimpleCartItem;
+Use InboxAgency\Catalog\Entity\ProductInterface;
 
-class Cart
+class CartService
 {
     private $session;
 
@@ -29,7 +30,7 @@ class Cart
         return $cart;
     }
 
-    public function addProduct($product, $qty = 1)
+    public function addProduct(ProductInterface $product, $qty = 1)
     {
         $cart = $this->getCart();
 
