@@ -21,6 +21,8 @@ $ docker-compose exec php vendor/bin/phinx migrate
 $ docker-compose exec php vendor/bin/phinx seed:run
 ```
 
+After this, access `http://localhost:8088`.
+
 ## Checking emails sent by the worker
 
 `docker-compose logs -f mail_worker`
