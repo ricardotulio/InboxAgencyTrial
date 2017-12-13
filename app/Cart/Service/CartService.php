@@ -7,7 +7,7 @@ use InboxAgency\Cart\Entity\Cart;
 use InboxAgency\Cart\Entity\CartItem;
 use InboxAgency\Catalog\Entity\ProductInterface;
 
-class CartService
+class CartService implements CartServiceInterface
 {
     private $session;
 

@@ -5,7 +5,7 @@ namespace InboxAgency\Order\Controller;
 use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\CartService;
+use InboxAgency\Cart\Service\CartServiceInterface as CartService;
 
 /**
  * @codeCoverageIgnore

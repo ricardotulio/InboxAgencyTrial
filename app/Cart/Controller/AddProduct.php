@@ -6,23 +6,22 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Catalog\Entity\Product;
 use InboxAgency\Catalog\Repository\ProductRepository;
-use InboxAgency\Cart\Service\CartService;
-use InboxAgency\Cart\Entity\SimpleCartItem;
+use InboxAgency\Cart\Service\CartServiceInterface as CartService;
 
 /**
  * @codeCoverageIgnore
  */
 class AddProduct
 {
-    private $service;
+    private $cartService;
 
     private $productRepository;
 
     public function __construct(
-        CartService $service,
+        CartService $cartService,
         ProductRepository $productRepository
     ) {
-        $this->service = $service;
+        $this->cartService = $cartService;
         $this->productRepository = $productRepository;
     }
 
@@ -35,7 +34,7 @@ class AddProduct
         $product = $this->productRepository->findById($data['id']);
 
         if ($product) {
-            $this->service->addProduct($product);
+            $this->cartService->addProduct($product);
 
             return $response->withRedirect('/cart/', 301);
         }

@@ -12,14 +12,14 @@ use InboxAgency\Catalog\Repository\ProductRepository;
  */
 class ShowCatalog
 {
-    private $repository;
+    private $productRepository;
     private $view;
 
     public function __construct(
-        ProductRepository $repository,
+        ProductRepository $productRepository,
         Twig $view
     ) {
-        $this->repository = $repository;
+        $this->productRepository = $productRepository;
         $this->view = $view;
     }
 
@@ -27,7 +27,7 @@ class ShowCatalog
         Request $request,
         Response $response
     ) {
-        $products = $this->repository->getList();
+        $products = $this->productRepository->getList();
 
         return $this->view->render(
             $response,

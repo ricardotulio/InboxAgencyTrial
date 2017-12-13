@@ -11,18 +11,18 @@ use InboxAgency\User\Service\UserServiceInterface as UserService;
  */
 class Logout
 {
-    private $service;
+    private $userService;
 
-    public function __construct(UserService $service)
+    public function __construct(UserService $userService)
     {
-        $this->service = $service;
+        $this->userService = $userService;
     }
 
     public function __invoke(
         Request $request,
         Response $response
     ) {
-        $this->service->logout();
+        $this->userService->logout();
 
         return $response->withRedirect(
             getenv('BASE_URL') . '/login/',

@@ -4,8 +4,8 @@ namespace InboxAgency\Purchase\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\CartService;
-use InboxAgency\Purchase\Service\PurchaseService;
+use InboxAgency\Cart\Service\CartServiceInterface as CartService;
+use InboxAgency\Purchase\Service\PurchaseServiceInterface as PurchaseService;
 use InboxAgency\User\Entity\User;
 use InboxAgency\Purchase\Entity\Purchase;
 

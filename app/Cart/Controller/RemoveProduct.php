@@ -4,24 +4,21 @@ namespace InboxAgency\Cart\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\CartService;
-use InboxAgency\Cart\Entity\SimpleCartItem;
-use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Cart\Service\CartServiceInterface as CartService;
 
 /**
  * @codeCoverageIgnore
  */
 class RemoveProduct
 {
-    private $service;
+    private $cartService;
 
     private $view;
 
     public function __construct(
-        CartService $service
+        CartService $cartService
     ) {
-        $this->service = $service;
-        $this->view = $view;
+        $this->cartService = $cartService;
     }
 
     public function __invoke(
@@ -30,7 +27,7 @@ class RemoveProduct
     ) {
         $data = $request->getParsedBody();
 
-        $this->service->removeProduct($data['id']);
+        $this->cartService->removeProduct($data['id']);
 
         return $response->withRedirect('/cart/', 301);
     }

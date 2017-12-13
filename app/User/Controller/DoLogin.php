@@ -12,15 +12,15 @@ use InboxAgency\User\Service\UserServiceInterface as UserService;
  */
 class DoLogin
 {
-    private $service;
+    private $userService;
 
     private $view;
 
     public function __construct(
-        UserService $service,
+        UserService $userService,
         Twig $view
     ) {
-        $this->service = $service;
+        $this->userService = $userService;
         $this->view = $view;
     }
 
@@ -30,7 +30,7 @@ class DoLogin
     ) {
         $data = $request->getParsedBody();
 
-        if (!$this->service->login($data['email'], $data['password'])) {
+        if (!$this->userService->login($data['email'], $data['password'])) {
             return $this->view->render(
                 $response,
                 'user/login.html',
