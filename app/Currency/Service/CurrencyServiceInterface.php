@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace InboxAgency\Currency\Service;
 
