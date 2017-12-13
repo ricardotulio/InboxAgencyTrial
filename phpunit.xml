@@ -21,6 +21,7 @@
             <directory>./app</directory>
             <directory>./lib</directory>
             <exclude>
+                <file>./app/bootstrap.php</file>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
             </exclude>
