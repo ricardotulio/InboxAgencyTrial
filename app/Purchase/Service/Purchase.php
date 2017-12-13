@@ -15,6 +15,9 @@ class Purchase
 
     private $view;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(
         AMQPStreamConnection $qeueConnection,
         Twig $view
