@@ -21,6 +21,16 @@ $container['view'] = function($container) use ($config) {
         )
     );
 
+    $currency = new \Twig_SimpleFilter(
+        'currency',
+        new InboxAgency\TwigFilter\Currency(
+            $container->get('service_currency')
+        )
+    );
+
+    $twigEnvironment = $view->getEnvironment();
+    $twigEnvironment->addFilter($currency);
+
     return $view;
 };
 
