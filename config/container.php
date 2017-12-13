@@ -91,7 +91,7 @@ $container['ctrl_logout'] = function($container) {
 };
 
 $container['ctrl_catalog'] = function($container) {
-    return new InboxAgency\Catalog\Controller\Catalog\Catalog(
+    return new InboxAgency\Catalog\Controller\ShowCatalog(
         new InboxAgency\Catalog\Repository\DBALProductRepository(
             $container->get('conn')
         ),

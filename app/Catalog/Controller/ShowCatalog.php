@@ -1,6 +1,6 @@
 <?php
 
-namespace InboxAgency\Catalog\Controller\Catalog;
+namespace InboxAgency\Catalog\Controller;
 
 use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,7 +10,7 @@ use InboxAgency\Catalog\Repository\ProductRepository;
 /**
  * @codeCoverageIgnore
  */
-class Catalog
+class ShowCatalog
 {
     private $repository;
     private $view;
