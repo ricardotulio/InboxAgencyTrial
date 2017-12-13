@@ -2,8 +2,8 @@
 
 namespace InboxAgency\Purchase\Entity;
 
-use InboxAgency\User\Entity\User;
-use InboxAgency\Cart\Entity\Cart;
+use InboxAgency\User\Entity\UserInterface as User;
+use InboxAgency\Cart\Entity\CartInterface as Cart;
 
 class Purchase implements PurchaseInterface
 {

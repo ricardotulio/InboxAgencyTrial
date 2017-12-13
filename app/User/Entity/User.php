@@ -2,7 +2,7 @@
 
 namespace InboxAgency\User\Entity;
 
-class User
+class User implements UserInterface
 {
     private $id;
 
