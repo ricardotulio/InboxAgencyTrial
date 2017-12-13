@@ -4,6 +4,11 @@
 
 The propose of this project is provide an webstore containing a basic login, home page and purchase page.
 
+## Dependencies
+
+- docker (>= 17.09.*)
+- dockcer-compose (>= 1.8.0)
+
 ## Running this project
 
 To run this project just run commands below:
