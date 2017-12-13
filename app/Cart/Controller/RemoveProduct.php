@@ -4,7 +4,7 @@ namespace InboxAgency\Cart\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\Cart as CartService;
+use InboxAgency\Cart\Service\CartService;
 use InboxAgency\Cart\Entity\SimpleCartItem;
 use InboxAgency\Catalog\Entity\Product;
 

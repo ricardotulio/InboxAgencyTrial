@@ -37,7 +37,7 @@ $container['product_repository'] = function($container) {
 };
 
 $container['service_cart'] = function($container) {
-    return new InboxAgency\Cart\Service\Cart(
+    return new InboxAgency\Cart\Service\CartService(
         $container->get('session')
     );
 };
