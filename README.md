@@ -16,11 +16,11 @@ $ docker-compose exec php vendor/bin/phinx seed:run
 
 ## Code Sniffer
 
-To run the Code Sniffer, just exec `vendor/bin/phpcs --standard=PSR2 src/`.
+To run the Code Sniffer, just exec `vendor/bin/phpcs --standard=PSR2 app/`.
 
 ## Mess Detector
 
-To run the Code Sniffer, just exec `vendor/bin/phpmd src/ text cleancode`.
+To run the Code Sniffer, just exec `vendor/bin/phpmd app/ text cleancode`.
 
 ## Testing
 
