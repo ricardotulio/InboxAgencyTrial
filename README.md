@@ -11,7 +11,9 @@ The propose of this project is provide an webstore containing a basic login, hom
 
 ## Running this project
 
-To run this project just run commands below:
+First, copy `.env.example` to `.env` and set smtp environments. Prefer to use gmail account.
+
+After this, just run commands below:
 
 ```
 $ docker-compose build
@@ -29,12 +31,12 @@ After this, access `http://localhost:8088`.
 
 ## Code Sniffer
 
-`vendor/bin/phpcs --standard=PSR2 app/`.
+`vendor/bin/phpcs --standard=PSR2 app/`
 
 ## Mess Detector
 
-`vendor/bin/phpmd app/ text cleancode`.
+`vendor/bin/phpmd app/ text cleancode`
 
 ## Testing
 
-`/vendor/bin/phpunit`.
+`/vendor/bin/phpunit`
