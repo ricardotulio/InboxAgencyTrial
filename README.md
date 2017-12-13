@@ -43,4 +43,4 @@ After this, access `http://localhost:8080` using email `teste@teste.com` and pas
 
 ## Testing
 
-`$ docker-compose exec php /vendor/bin/phpunit`
+`$ docker-compose exec php vendor/bin/phpunit`
