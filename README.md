@@ -12,9 +12,12 @@ The propose of this project is provide an webstore containing a basic login, hom
 ## Running this project
 
 First, copy `.env.example` to `.env` and set smtp environments.
-```
+
+##### Receiving email from application
+
 If you wanto to receive emails sent by worker, configure SMTP using a valid Gmail account and configure yours security settings. You can find how to configurate in (https://www.formget.com/send-email-via-gmail-smtp-server-in-php/) on session "Change in Gmail settings:". Also use a valid e-mail into db/seeds/UserSeeder.php.
-```
+
+***
 
 After this, just run commands below:
 
