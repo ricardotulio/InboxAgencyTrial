@@ -60,7 +60,7 @@ class SimpleCartTest extends TestCase
 
         $cartItems = $cart->getCartItems();
 
-        $this->assertNull($cartItems[$cartItem1->getId()]);
+        $this->assertFalse(isset($cartItems[$cartItem1->getId()]));
         $this->assertCount(1, $cartItems);
     }
 
