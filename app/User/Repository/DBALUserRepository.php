@@ -8,7 +8,7 @@ use InboxAgency\User\Entity\User;
 /**
  * @codeCoverageIgnore
  */
-class DBALUserRepository implements UserRepository
+class DBALUserRepository implements UserRepositoryInterface
 {
     private $conn;
 

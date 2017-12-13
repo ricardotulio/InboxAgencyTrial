@@ -2,7 +2,7 @@
 
 namespace InboxAgency\User\Repository;
 
-interface UserRepository
+interface UserRepositoryInterface
 {
     public function findByEmail($email);
 }

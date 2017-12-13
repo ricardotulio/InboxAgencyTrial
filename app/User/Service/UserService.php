@@ -3,7 +3,7 @@
 namespace InboxAgency\User\Service;
 
 use InboxAgency\Session\Session;
-use InboxAgency\User\Repository\UserRepository;
+use InboxAgency\User\Repository\UserRepositoryInterface as UserRepository;
 
 class UserService implements UserServiceInterface
 {
