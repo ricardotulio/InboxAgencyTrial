@@ -49,7 +49,7 @@ class CurrencyTest extends TestCase
     }
 
     /**
-     *
+     * @test
      */
     public function mustRetrieveDefaultCurrency()
     {
