@@ -65,7 +65,7 @@ $container['qeue_connection'] = function($container) use ($config) {
 };
 
 $container['service_purchase'] = function($container) {
-    return new InboxAgency\Purchase\Service\Purchase(
+    return new InboxAgency\Purchase\Service\PurchaseService(
         $container->get('qeue_connection'),
         $container->get('view')
     );

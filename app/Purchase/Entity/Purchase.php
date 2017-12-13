@@ -5,7 +5,7 @@ namespace InboxAgency\Purchase\Entity;
 use InboxAgency\User\Entity\User;
 use InboxAgency\Cart\Entity\Cart;
 
-class Purchase
+class Purchase implements PurchaseInterface
 {
     private $id;
 

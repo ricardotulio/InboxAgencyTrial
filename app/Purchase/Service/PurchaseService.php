@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
-use InboxAgency\Purchase\Entity\Purchase as PurchaseEntity;
+use InboxAgency\Purchase\Entity\PurchaseInterface as Purchase;
 
-class Purchase
+class PurchaseService implements PurchaseServiceInterface
 {
     private $qeueConnection;
 
@@ -26,7 +26,7 @@ class Purchase
         $this->view = $view;
     }
 
-    public function sendPurchaseEmail(PurchaseEntity $purchase)
+    public function sendPurchaseEmail(Purchase $purchase)
     {
         $mail = new PHPMailer(true);
 
@@ -57,7 +57,7 @@ class Purchase
         }
     }
 
-    public function finishPurchase(PurchaseEntity $purchase)
+    public function finishPurchase(Purchase $purchase)
     {
         $channel = $this->qeueConnection->channel();
         $channel->queue_declare('hello', false, false, false, false);
