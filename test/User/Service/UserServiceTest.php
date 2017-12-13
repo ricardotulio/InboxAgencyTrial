@@ -4,10 +4,10 @@ namespace InboxAgency\User\Service;
 
 use PHPUnit\Framework\TestCase;
 use InboxAgency\Session\Session;
-use InboxAgency\User\Entity\User as UserEntity;
+use InboxAgency\User\Entity\UserInterface;
 use InboxAgency\User\Repository\UserRepository;
 
-class UserTest extends TestCase
+class UserTestService extends TestCase
 {
     /**
      * @test
@@ -16,15 +16,11 @@ class UserTest extends TestCase
     {
         $session = $this->createMock(Session::class);
         $repository = $this->createMock(UserRepository::class);
+        $user = $this->createMock(UserInterface::class);
 
-        $service = new User($session, $repository);
+        $userService = new UserService($session, $repository);
 
-        $email = 'john@due.com';
-        $password = '123456';
-
-        $user = new UserEntity();
-        $user->setEmail($email);
-        $user->setPassword($password);
+        $user->method('authenticate')->willReturn(true);
 
         $repository->expects($this->once())
             ->method('findByEmail')
@@ -38,7 +34,7 @@ class UserTest extends TestCase
                 $this->equalTo($user)
             );
 
-        $this->assertTrue($service->login($email, $password));
+        $this->assertTrue($userService->login($email, $password));
     }
 
     /**
@@ -49,12 +45,12 @@ class UserTest extends TestCase
         $session = $this->createMock(Session::class);
         $repository = $this->createMock(UserRepository::class);
 
-        $service = new User($session, $repository);
-        
+        $userService = new UserService($session, $repository);
+
         $email = 'john@due.com';
         $password = '123456';
 
-        $user = $this->createMock(UserEntity::class);
+        $user = $this->createMock(UserInterface::class);
         $user->expects($this->once())
             ->method('authenticate')
             ->willReturn(false);
@@ -63,7 +59,7 @@ class UserTest extends TestCase
             ->method('findByEmail')
             ->willReturn($user);
 
-        $this->assertFalse($service->login($email, $password));
+        $this->assertFalse($userService->login($email, $password));
     }
 
     /**
@@ -74,11 +70,11 @@ class UserTest extends TestCase
         $session = $this->createMock(Session::class);
         $repository = $this->createMock(UserRepository::class);
 
-        $service = new User($session, $repository);
+        $userService = new UserService($session, $repository);
 
         $session->expects($this->once())
             ->method('destroy');
 
-        $service->logout(); 
+        $userService->logout();
     }
 }

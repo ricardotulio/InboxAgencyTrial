@@ -5,7 +5,7 @@ namespace InboxAgency\User\Service;
 use InboxAgency\Session\Session;
 use InboxAgency\User\Repository\UserRepository;
 
-class User
+class UserService implements UserServiceInterface
 {
     private $session;
 
