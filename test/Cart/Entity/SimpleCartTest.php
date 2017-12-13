@@ -56,7 +56,7 @@ class SimpleCartTest extends TestCase
         $cart->addCartItem($cartItem1);
         $cart->addCartItem($cartItem2);
 
-        $cart->removeCartItem($cartItem1);
+        $cart->removeCartItem($cartItem1Id);
 
         $cartItems = $cart->getCartItems();
 
