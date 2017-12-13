@@ -26,7 +26,7 @@ class UserService implements UserServiceInterface
     {
         $user = $this->repository->findByEmail($email);
 
-        if ($user->authenticate($password)) {
+        if ($user && $user->authenticate($password)) {
             $this->session->set('user', $user);
             return true;
         }

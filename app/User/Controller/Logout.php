@@ -4,7 +4,7 @@ namespace InboxAgency\User\Controller;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\User as UserService;
+use InboxAgency\User\Service\UserServiceInterface as UserService;
 
 /**
  * @codeCoverageIgnore

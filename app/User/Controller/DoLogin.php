@@ -5,7 +5,7 @@ namespace InboxAgency\User\Controller;
 use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\User as UserService;
+use InboxAgency\User\Service\UserServiceInterface as UserService;
 
 /**
  * @codeCoverageIgnore
@@ -33,9 +33,9 @@ class DoLogin
         if (!$this->service->login($data['email'], $data['password'])) {
             return $this->view->render(
                 $response,
-                'user/login.phtml',
+                'user/login.html',
                 [
-                    'loginError' => 'E-mail e/ou senha inválidos.'
+                    'loginError' => 'Invalid e-mail and password.'
                 ]
             );
         }

@@ -53,7 +53,7 @@ $container['service_cart'] = function($container) {
 };
 
 $container['service_user'] = function($container) {
-    return new InboxAgency\User\Service\User(
+    return new InboxAgency\User\Service\UserService(
         $container->get('session'),
         $container->get('user_repository')
     );
