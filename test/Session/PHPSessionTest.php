@@ -22,4 +22,14 @@ class PHPSessionTest extends TestCase
 
         $this->assertEquals($item, $itemRetrieved);
     }
+
+    /**
+     * @test
+     */
+    public function mustReturnFalseWhenHasNoItem()
+    {
+        $session = new PHPSession();
+
+        $this->assertFalse($session->get('bla'));
+    }
 }

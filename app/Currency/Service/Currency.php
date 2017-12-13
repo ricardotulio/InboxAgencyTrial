@@ -6,7 +6,7 @@ use InboxAgency\Session\Session;
 
 class Currency
 {
-    const CURRENCY_DEFAULT = 'BRL';
+    const DEFAULT_CURRENCY = 'BRL';
 
     private $session;
 
@@ -51,7 +51,7 @@ class Currency
         $currency = $this->session->get('currency');
 
         if ($currency == null) {
-            $currency = $this->currencies[self::CURRENCY_DEFAULT];
+            $currency = $this->currencies[self::DEFAULT_CURRENCY];
         }
 
         return $currency;

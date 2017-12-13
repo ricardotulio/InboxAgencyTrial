@@ -10,6 +10,9 @@ class Cart
 {
     private $session;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Session $session)
     {
         $this->session = $session;

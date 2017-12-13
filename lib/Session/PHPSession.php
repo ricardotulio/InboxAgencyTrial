@@ -18,6 +18,9 @@ class PHPSession implements Session
         $_SESSION[$key] = serialize($value);
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function destroy()
     {
         $_SESSION = [];

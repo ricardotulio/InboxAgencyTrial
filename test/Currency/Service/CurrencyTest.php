@@ -47,4 +47,20 @@ class CurrencyTest extends TestCase
 
         $this->assertEquals($currencies[$currencyCode], $service->get());
     }
+
+    /**
+     *
+     */
+    public function mustRetrieveDefaultCurrency()
+    {
+        $session = $this->createMock(Session::class);
+        $service = new Currency($session);
+
+        $currencies = $service->getCurrencies();
+
+        $this->assertEquals(
+            $currencies[Currency::DEFAULT_CURRENCY],
+            $service->get()
+        );
+    }
 }
