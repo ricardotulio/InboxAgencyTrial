@@ -24,7 +24,7 @@ services:
         env_file: .env
 
     composer:
-        image: composer/composer:php5
+        build: build/composer
         volumes:
             - ./:/usr/share/nginx/html/
         working_dir: /usr/share/nginx/html/
