@@ -7,6 +7,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Catalog\Repository\ProductRepository;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Catalog
 {
     private $repository;

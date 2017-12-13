@@ -9,6 +9,9 @@ use InboxAgency\Purchase\Service\Purchase as PurchaseService;
 use InboxAgency\User\Entity\User;
 use InboxAgency\Purchase\Entity\Purchase;
 
+/**
+ * @codeCoverageIgnore
+ */
 class NewPurchase
 {
     private $cartService;

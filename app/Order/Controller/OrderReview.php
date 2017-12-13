@@ -7,6 +7,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use InboxAgency\Cart\Service\Cart as CartService;
 
+/**
+ * @codeCoverageIgnore
+ */
 class OrderReview
 {
     private $cartService;

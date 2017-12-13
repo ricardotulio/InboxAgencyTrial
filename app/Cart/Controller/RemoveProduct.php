@@ -8,6 +8,9 @@ use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Cart\Entity\SimpleCartItem;
 use InboxAgency\Catalog\Entity\Product;
 
+/**
+ * @codeCoverageIgnore
+ */
 class RemoveProduct
 {
     private $service;

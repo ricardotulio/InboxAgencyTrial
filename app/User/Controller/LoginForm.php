@@ -6,6 +6,9 @@ use Slim\Views\Twig;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+/**
+ * @codeCoverageIgnore
+ */
 class LoginForm
 {
     private $view;

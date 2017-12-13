@@ -9,6 +9,9 @@ use InboxAgency\Catalog\Repository\ProductRepository;
 use InboxAgency\Cart\Service\Cart as CartService;
 use InboxAgency\Cart\Entity\SimpleCartItem;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AddProduct
 {
     private $service;
