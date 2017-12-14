@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Currency\Service;
 
-use InboxAgency\Session\SessionInterface as Session;
+use InboxAgency\Session\SessionInterface;
 
 class CurrencyService implements CurrencyServiceInterface
 {
@@ -28,7 +28,7 @@ class CurrencyService implements CurrencyServiceInterface
     /**
      * @codeCoverageIgnore
      */
-    public function __construct(Session $session)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }

@@ -2,9 +2,9 @@
 
 namespace InboxAgency\Currency\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Currency\Service\CurrencyServiceInterface as CurrencyService;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use InboxAgency\Currency\Service\CurrencyServiceInterface;
 
 /**
  * @codeCoverageIgnore
@@ -13,14 +13,14 @@ class SetCurrency
 {
     private $currencyService;
 
-    public function __construct(CurrencyService $currencyService)
+    public function __construct(CurrencyServiceInterface $currencyService)
     {
         $this->currencyService = $currencyService;
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         $data = $request->getParsedBody();
 

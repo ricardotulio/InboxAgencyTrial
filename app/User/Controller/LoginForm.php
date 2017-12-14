@@ -3,8 +3,8 @@
 namespace InboxAgency\User\Controller;
 
 use Slim\Views\Twig;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @codeCoverageIgnore
@@ -19,8 +19,8 @@ class LoginForm
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         return $this->view->render($response, 'user/login.html');
     }

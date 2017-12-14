@@ -2,7 +2,7 @@
 
 namespace InboxAgency\Catalog\Repository;
 
-interface ProductRepository
+interface ProductRepositoryInterface
 {
     public function findById($id);
 

@@ -3,9 +3,9 @@
 namespace InboxAgency\Catalog\Controller;
 
 use Slim\Views\Twig;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Catalog\Repository\ProductRepository;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use InboxAgency\Catalog\Repository\ProductRepositoryInterface;
 
 /**
  * @codeCoverageIgnore
@@ -16,7 +16,7 @@ class ShowCatalog
     private $view;
 
     public function __construct(
-        ProductRepository $productRepository,
+        ProductRepositoryInterface $productRepository,
         Twig $view
     ) {
         $this->productRepository = $productRepository;
@@ -24,8 +24,8 @@ class ShowCatalog
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         $products = $this->productRepository->getList();
 

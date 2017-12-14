@@ -4,9 +4,9 @@ namespace InboxAgency\Cart\Entity;
 
 use PHPUnit\Framework\TestCase;
 use InboxAgency\Cart\Entity\CartItem;
-use InboxAgency\Catalog\Entity\Product;
+use InboxAgency\Catalog\Entity\ProductInterface;
 
-class SimpleCartItemTest extends TestCase
+class CartItemTest extends TestCase
 {
     /**
      * @test
@@ -15,7 +15,7 @@ class SimpleCartItemTest extends TestCase
     {
         $price = 15.0;
 
-        $product = $this->createMock(Product::class);
+        $product = $this->createMock(ProductInterface::class);
         $product->method('getPrice')->willReturn($price);
 
         $cartItem = new CartItem($product);
@@ -28,10 +28,7 @@ class SimpleCartItemTest extends TestCase
      */
     public function mustIncrementQty()
     {
-        $price = 10.2;
-
-        $product = $this->createMock(Product::class);
-        $product->method('getPrice')->willReturn($price);
+        $product = $this->createMock(ProductInterface::class);
 
         $cartItem = new CartItem($product);
         $cartItem->incrementQty();
@@ -48,7 +45,7 @@ class SimpleCartItemTest extends TestCase
         $qty = 3;
         $expectedAmount = $qty * $price;
 
-        $product = $this->createMock(Product::class);
+        $product = $this->createMock(ProductInterface::class);
         $product->method('getPrice')->willReturn($price);
 
         $cartItem = new CartItem($product, $qty);

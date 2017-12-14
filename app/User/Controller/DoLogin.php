@@ -3,9 +3,9 @@
 namespace InboxAgency\User\Controller;
 
 use Slim\Views\Twig;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\UserServiceInterface as UserService;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use InboxAgency\User\Service\UserServiceInterface;
 
 /**
  * @codeCoverageIgnore
@@ -17,7 +17,7 @@ class DoLogin
     private $view;
 
     public function __construct(
-        UserService $userService,
+        UserServiceInterface $userService,
         Twig $view
     ) {
         $this->userService = $userService;
@@ -25,8 +25,8 @@ class DoLogin
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         $data = $request->getParsedBody();
 

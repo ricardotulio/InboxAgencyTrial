@@ -2,11 +2,11 @@
 
 namespace InboxAgency\Cart\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use InboxAgency\Catalog\Entity\Product;
-use InboxAgency\Catalog\Repository\ProductRepository;
-use InboxAgency\Cart\Service\CartServiceInterface as CartService;
+use InboxAgency\Catalog\Repository\ProductRepositoryInterface;
+use InboxAgency\Cart\Service\CartServiceInterface;
 
 /**
  * @codeCoverageIgnore
@@ -18,16 +18,16 @@ class AddProduct
     private $productRepository;
 
     public function __construct(
-        CartService $cartService,
-        ProductRepository $productRepository
+        CartServiceInterface $cartService,
+        ProductRepositoryInterface $productRepository
     ) {
         $this->cartService = $cartService;
         $this->productRepository = $productRepository;
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         $data = $request->getParsedBody();
 

@@ -3,7 +3,7 @@
 namespace InboxAgency\User\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\SessionInterface as Session;
+use InboxAgency\Session\SessionInterface;
 use InboxAgency\User\Entity\UserInterface;
 use InboxAgency\User\Repository\UserRepositoryInterface;
 
@@ -14,7 +14,7 @@ class UserTestService extends TestCase
      */
     public function mustLoginWithValidUser()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $repository = $this->createMock(UserRepositoryInterface::class);
         $user = $this->createMock(UserInterface::class);
 
@@ -43,7 +43,7 @@ class UserTestService extends TestCase
      */
     public function mustDenyUserWhenCredentialHasInvalid()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $repository = $this->createMock(UserRepositoryInterface::class);
 
         $userService = new UserService($session, $repository);
@@ -68,7 +68,7 @@ class UserTestService extends TestCase
      */
     public function mustDestroySessionWhenLogout()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $repository = $this->createMock(UserRepositoryInterface::class);
 
         $userService = new UserService($session, $repository);

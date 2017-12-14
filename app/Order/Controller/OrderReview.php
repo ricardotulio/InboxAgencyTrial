@@ -3,9 +3,9 @@
 namespace InboxAgency\Order\Controller;
 
 use Slim\Views\Twig;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\Cart\Service\CartServiceInterface as CartService;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use InboxAgency\Cart\Service\CartServiceInterface;
 
 /**
  * @codeCoverageIgnore
@@ -17,7 +17,7 @@ class OrderReview
     private $view;
 
     public function __construct(
-        CartService $cartService,
+        CartServiceInterface $cartService,
         Twig $view
     ) {
         $this->cartService = $cartService;
@@ -25,8 +25,8 @@ class OrderReview
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         if (!$this->cartService->hasItems()) {
             return $response->withRedirect(

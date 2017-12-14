@@ -3,8 +3,8 @@
 namespace InboxAgency\Cart\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\SessionInterface as Session;
-use InboxAgency\Cart\Entity\Cart;
+use InboxAgency\Session\SessionInterface;
+use InboxAgency\Cart\Entity\CartInterface;
 use inboxAgency\Catalog\Entity\ProductInterface;
 
 class CartServiceTest extends TestCase
@@ -14,11 +14,14 @@ class CartServiceTest extends TestCase
      */
     public function mustCreateNewCartIfHasNoCartIntoSession()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $cartService = new CartService($session);
         $cart = $cartService->getCart();
 
-        $this->assertInstanceOf(\InboxAgency\Cart\Entity\Cart::class, $cart);
+        $this->assertInstanceOf(
+            \InboxAgency\Cart\Entity\CartInterface::class,
+            $cart
+        );
     }
 
     /**
@@ -26,10 +29,10 @@ class CartServiceTest extends TestCase
      */
     public function mustRetrieveCartFromSession()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $cartService = new CartService($session);
 
-        $cart = $this->createMock(Session::class);
+        $cart = $this->createMock(SessionInterface::class);
         $session->expects($this->once())
             ->method('get')
             ->with($this->equalTo('cart'))
@@ -43,8 +46,8 @@ class CartServiceTest extends TestCase
      */
     public function mustAddProductToCart()
     {
-        $session = $this->createMock(Session::class);
-        $cart = $this->createMock(Cart::class);
+        $session = $this->createMock(SessionInterface::class);
+        $cart = $this->createMock(CartInterface::class);
         $product = $this->createMock(ProductInterface::class);
 
         $session->expects($this->once())
@@ -75,8 +78,8 @@ class CartServiceTest extends TestCase
      */
     public function mustVerifyIfHasItems()
     {
-        $session = $this->createMock(Session::class);
-        $cart = $this->createMock(Cart::class);
+        $session = $this->createMock(SessionInterface::class);
+        $cart = $this->createMock(CartInterface::class);
 
         $cart->expects($this->once())
             ->method('hasItems')
@@ -99,8 +102,8 @@ class CartServiceTest extends TestCase
     {
         $itemId = 10;
 
-        $session = $this->createMock(Session::class);
-        $cart = $this->createMock(Cart::class);
+        $session = $this->createMock(SessionInterface::class);
+        $cart = $this->createMock(CartInterface::class);
 
         $cart->expects($this->once())
             ->method('removeCartItem')
@@ -120,8 +123,8 @@ class CartServiceTest extends TestCase
      */
     public function mustCleanCart()
     {
-        $session = $this->createMock(Session::class);
-        $cart = $this->createMock(Cart::class);
+        $session = $this->createMock(SessionInterface::class);
+        $cart = $this->createMock(CartInterface::class);
 
         $cart->expects($this->once())
             ->method('cleanCart');

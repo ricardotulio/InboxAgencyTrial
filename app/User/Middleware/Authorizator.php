@@ -2,15 +2,14 @@
 
 namespace InboxAgency\User\Middleware;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\Authorizator as AuthorizatorService;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class Authorizator
 {
     public function __invoke(
-        Request $request,
-        Response $response,
+        ServerRequestInterface $request,
+        ResponseInterface $response,
         $next
     ) {
         $session = $request->getAttribute('session');

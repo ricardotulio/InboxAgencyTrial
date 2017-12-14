@@ -2,8 +2,8 @@
 
 namespace InboxAgency\Purchase\Entity;
 
-use InboxAgency\User\Entity\UserInterface as User;
-use InboxAgency\Cart\Entity\CartInterface as Cart;
+use InboxAgency\User\Entity\UserInterface;
+use InboxAgency\Cart\Entity\CartInterface;
 
 class Purchase implements PurchaseInterface
 {
@@ -16,8 +16,10 @@ class Purchase implements PurchaseInterface
     /**
      * @codeCoverageIgnore
      */
-    public function __construct(User $user, Cart $cart)
-    {
+    public function __construct(
+        UserInterface $user,
+        CartInterface $cart
+    ) {
         $this->user = $user;
         $this->cart = $cart;
     }

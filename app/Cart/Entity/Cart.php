@@ -5,13 +5,13 @@ namespace InboxAgency\Cart\Entity;
 class Cart implements CartInterface
 {
     private $items;
-    
+
     public function __construct()
     {
         $this->items = [];
     }
 
-    public function addCartItem(CartItem $item)
+    public function addCartItem(CartItemInterface $item)
     {
         if (!isset($this->items[$item->getId()])) {
             return $this->items[$item->getId()] = $item;

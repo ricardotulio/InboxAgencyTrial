@@ -3,7 +3,7 @@
 namespace InboxAgency\Currency\Service;
 
 use PHPUnit\Framework\TestCase;
-use InboxAgency\Session\SessionInterface as Session;
+use InboxAgency\Session\SessionInterface;
 
 class CurrencyServiceTest extends TestCase
 {
@@ -12,7 +12,7 @@ class CurrencyServiceTest extends TestCase
      */
     public function mustSetCurrency()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $currencyService = new CurrencyService($session);
 
         $currencies = $currencyService->getCurrencies();
@@ -34,7 +34,7 @@ class CurrencyServiceTest extends TestCase
      */
     public function mustRetrieveCurrency()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $currencyService = new CurrencyService($session);
 
         $currencies = $currencyService->getCurrencies();
@@ -53,7 +53,7 @@ class CurrencyServiceTest extends TestCase
      */
     public function mustRetrieveDefaultCurrency()
     {
-        $session = $this->createMock(Session::class);
+        $session = $this->createMock(SessionInterface::class);
         $currencyService = new CurrencyService($session);
 
         $currencies = $currencyService->getCurrencies();

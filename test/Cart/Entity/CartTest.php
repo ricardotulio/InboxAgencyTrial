@@ -6,16 +6,23 @@ use PHPUnit\Framework\TestCase;
 
 class CartTest extends TestCase
 {
+    private function createCartItemMock($id)
+    {
+        $cartItemMock = $this->createMock(CartItemInterface::class);
+        $cartItemMock->method('getId')
+            ->willReturn($id);
+
+        return $cartItemMock;
+    }
+
     /**
      * @test
      */
     public function mustAddCartItem()
     {
+        $cartItem = $this->createCartItemMock(10);
+
         $cart = new Cart();
-
-        $cartItem = $this->createMock(CartItem::class);
-        $cartItem->method('getId')->willReturn(10);
-
         $cart->addCartItem($cartItem);
 
         $this->assertCount(
@@ -31,9 +38,10 @@ class CartTest extends TestCase
     {
         $cart = new Cart();
 
-        $cartItem = $this->createMock(CartItem::class);
-        $cartItem->method('getId')->willReturn(10);
-        $cartItem->expects($this->once())->method('incrementQty');
+        $cartItemId = 10;
+        $cartItem = $this->createCartItemMock($cartItemId);
+        $cartItem->expects($this->once())
+            ->method('incrementQty');
 
         $cart->addCartItem($cartItem);
         $cart->addCartItem($cartItem);
@@ -45,11 +53,11 @@ class CartTest extends TestCase
     public function mustRemoveCartItem()
     {
         $cartItem1Id = 57;
-        $cartItem1 = $this->createMock(CartItem::class);
+        $cartItem1 = $this->createMock(CartItemInterface::class);
         $cartItem1->method('getId')->willReturn($cartItem1Id);
 
         $cartItem2Id = 33;
-        $cartItem2 = $this->createMock(CartItem::class);
+        $cartItem2 = $this->createMock(CartItemInterface::class);
         $cartItem2->method('getId')->willReturn($cartItem2Id);
 
         $cart = new Cart();
@@ -72,15 +80,15 @@ class CartTest extends TestCase
         $cart = new Cart();
 
         $cartItem1Id = 57;
-        $cartItem1 = $this->createMock(CartItem::class);
+        $cartItem1 = $this->createMock(CartItemInterface::class);
         $cartItem1->method('getId')->willReturn($cartItem1Id);
 
         $cartItem2Id = 33;
-        $cartItem2 = $this->createMock(CartItem::class);
+        $cartItem2 = $this->createMock(CartItemInterface::class);
         $cartItem2->method('getId')->willReturn($cartItem2Id);
 
         $cartItem3Id = 10;
-        $cartItem3 = $this->createMock(CartItem::class);
+        $cartItem3 = $this->createMock(CartItemInterface::class);
         $cartItem3->method('getId')->willReturn($cartItem3Id);
 
         $cart->addCartItem($cartItem1);

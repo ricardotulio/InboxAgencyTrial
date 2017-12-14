@@ -8,7 +8,7 @@ use InboxAgency\Catalog\Entity\Product;
 /**
  * @codeCoverageIgnore
  */
-class DBALProductRepository implements ProductRepository
+class DBALProductRepository implements ProductRepositoryInterface
 {
     private $conn;
 
@@ -28,7 +28,7 @@ class DBALProductRepository implements ProductRepository
         $productData = $stmt->fetch();
 
         $product = false;
-        
+
         if ($productData) {
             $product = new Product();
             $product->fromArray($productData);

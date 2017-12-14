@@ -3,11 +3,11 @@
 namespace InboxAgency\User\Middleware;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\UriInterface as Uri;
-use InboxAgency\Session\SessionInterface as Session;
-use InboxAgency\User\Entity\User;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
+use InboxAgency\Session\SessionInterface;
+use InboxAgency\User\Entity\UserInterface;
 
 class AuthorizatorTest extends TestCase
 {
@@ -16,14 +16,14 @@ class AuthorizatorTest extends TestCase
      */
     public function mustAthorizeWheUserAreLogged()
     {
-        $request = $this->createMock(Request::class);
-        $response = $this->createMock(Response::class);
-        $session = $this->createMock(Session::class);
-        $user = $this->createMock(User::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+        $session = $this->createMock(SessionInterface::class);
+        $user = $this->createMock(UserInterface::class);
 
         $request->expects($this->once())
             ->method('getAttribute')
-            ->with($this->equalTo(Session::SESSION_ATTRIBUTE))
+            ->with($this->equalTo(SessionInterface::SESSION_ATTRIBUTE))
             ->willReturn($session);
 
         $session->expects($this->once())
@@ -51,15 +51,15 @@ class AuthorizatorTest extends TestCase
      */
     public function mustAuthorizeWhenIsLoginPage()
     {
-        $request = $this->createMock(Request::class);
-        $response = $this->createMock(Response::class);
-        $uri = $this->createMock(Uri::class);
-        $session = $this->createMock(Session::class);
-        $user = $this->createMock(User::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
+        $uri = $this->createMock(UriInterface::class);
+        $session = $this->createMock(SessionInterface::class);
+        $user = $this->createMock(UserInterface::class);
 
         $request->expects($this->once())
             ->method('getAttribute')
-            ->with($this->equalTo(Session::SESSION_ATTRIBUTE))
+            ->with($this->equalTo(SessionInterface::SESSION_ATTRIBUTE))
             ->willReturn($session);
 
         $request->expects($this->once())
@@ -95,15 +95,15 @@ class AuthorizatorTest extends TestCase
      */
     public function mustUnauthorizeUserWhenNotLogged()
     {
-        $request = $this->createMock(Request::class);
+        $request = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(\Slim\Http\Response::class);
-        $uri = $this->createMock(Uri::class);
-        $session = $this->createMock(Session::class);
-        $user = $this->createMock(User::class);
+        $uri = $this->createMock(UriInterface::class);
+        $session = $this->createMock(SessionInterface::class);
+        $user = $this->createMock(UserInterface::class);
 
         $request->expects($this->once())
             ->method('getAttribute')
-            ->with($this->equalTo(Session::SESSION_ATTRIBUTE))
+            ->with($this->equalTo(SessionInterface::SESSION_ATTRIBUTE))
             ->willReturn($session);
 
         $request->expects($this->once())

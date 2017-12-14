@@ -4,7 +4,7 @@ namespace InboxAgency\Cart\Entity;
 
 interface CartInterface
 {
-    public function addCartItem(CartItem $item);
+    public function addCartItem(CartItemInterface $item);
 
     public function removeCartItem($id);
 

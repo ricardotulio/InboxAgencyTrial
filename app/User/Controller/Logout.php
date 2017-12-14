@@ -2,9 +2,9 @@
 
 namespace InboxAgency\User\Controller;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use InboxAgency\User\Service\UserServiceInterface as UserService;
+use Psr\Http\Message\ServerRequestInterface;;
+use Psr\Http\Message\ResponseInterface;
+use InboxAgency\User\Service\UserServiceInterface;
 
 /**
  * @codeCoverageIgnore
@@ -13,14 +13,14 @@ class Logout
 {
     private $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserServiceInterface $userService)
     {
         $this->userService = $userService;
     }
 
     public function __invoke(
-        Request $request,
-        Response $response
+        ServerRequestInterface $request,
+        ResponseInterface $response
     ) {
         $this->userService->logout();
 

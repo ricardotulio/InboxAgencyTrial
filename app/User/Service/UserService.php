@@ -2,8 +2,8 @@
 
 namespace InboxAgency\User\Service;
 
-use InboxAgency\Session\SessionInterface as Session;
-use InboxAgency\User\Repository\UserRepositoryInterface as UserRepository;
+use InboxAgency\Session\SessionInterface;
+use InboxAgency\User\Repository\UserRepositoryInterface;
 
 class UserService implements UserServiceInterface
 {
@@ -15,8 +15,8 @@ class UserService implements UserServiceInterface
      * @codeCoverageIgnore
      */
     public function __construct(
-        Session $session,
-        UserRepository $repository
+        SessionInterface $session,
+        UserRepositoryInterface $repository
     ) {
         $this->session = $session;
         $this->repository = $repository;

@@ -3,8 +3,8 @@
 namespace InboxAgency\Session;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class SessionMiddelwareTest extends TestCase
 {
@@ -13,8 +13,8 @@ class SessionMiddelwareTest extends TestCase
      */
     public function mustDefineSessionAttribute()
     {
-        $request = $this->createMock(Request::class);
-        $response = $this->createMock(Response::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $response = $this->createMock(ResponseInterface::class);
         $session = $this->createMock(SessionInterface::class);
 
         $request->expects($this->once())
