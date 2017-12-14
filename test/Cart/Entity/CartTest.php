@@ -10,12 +10,12 @@ class CartTest extends TestCase
     {
         $cartItemMock = $this->createMock(CartItemInterface::class);
 
-        if (isset($data['itemId']) {
+        if (isset($data['itemId'])) {
             $cartItemMock->method('getId')
                 ->willReturn($data['itemId']);
         }
 
-        if (isset($data['amount']) {
+        if (isset($data['amount'])) {
             $cartItemMock->method('getItemAmount')
                 ->willReturn($data['amount']);
         }
