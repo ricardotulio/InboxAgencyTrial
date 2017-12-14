@@ -9,10 +9,16 @@ class CartTest extends TestCase
     private function createCartItemMock($data)
     {
         $cartItemMock = $this->createMock(CartItemInterface::class);
-        $cartItemMock->method('getId')
-            ->willReturn($data['itemId']);
-        $cartItemMock->method('getItemAmount')
-            ->willReturn($data['amount']);
+
+        if (isset($data['itemId']) {
+            $cartItemMock->method('getId')
+                ->willReturn($data['itemId']);
+        }
+
+        if (isset($data['amount']) {
+            $cartItemMock->method('getItemAmount')
+                ->willReturn($data['amount']);
+        }
 
         return $cartItemMock;
     }
