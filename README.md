@@ -1,6 +1,6 @@
 # Inbox Agency Trial Challenge
 
-[![Build Status](https://travis-ci.org/ricardotulio/InboxAgencyTrail.svg?branch=master)](https://travis-ci.org/ricardotulio/InboxAgencyTrail) [![Coverage Status](https://coveralls.io/repos/github/ricardotulio/InboxAgencyTrail/badge.svg?branch=master)](https://coveralls.io/github/ricardotulio/InboxAgencyTrail?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/7b8118df908b57913483/maintainability)](https://codeclimate.com/github/ricardotulio/InboxAgencyTrail/maintainability)
+[![Build Status](https://travis-ci.org/ricardotulio/InboxAgencyTrial.svg?branch=master)](https://travis-ci.org/ricardotulio/InboxAgencyTrial) [![Coverage Status](https://coveralls.io/repos/github/ricardotulio/InboxAgencyTrial/badge.svg?branch=master)](https://coveralls.io/github/ricardotulio/InboxAgencyTrial?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/7b8118df908b57913483/maintainability)](https://codeclimate.com/github/ricardotulio/InboxAgencyTrial/maintainability)
 
 The propose of this project is provide an webstore containing a basic login, home page and purchase page.
 
