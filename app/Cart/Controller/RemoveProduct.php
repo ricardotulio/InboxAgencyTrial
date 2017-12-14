@@ -13,8 +13,6 @@ class RemoveProduct
 {
     private $cartService;
 
-    private $view;
-
     public function __construct(CartServiceInterface $cartService)
     {
         $this->cartService = $cartService;

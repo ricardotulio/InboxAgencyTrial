@@ -20,9 +20,9 @@ class Cart implements CartInterface
         return $this->items[$item->getId()]->incrementQty();
     }
 
-    public function removeCartItem($id)
+    public function removeCartItem($itemId)
     {
-        unset($this->items[$id]);
+        unset($this->items[$itemId]);
     }
 
     public function getCartItems()

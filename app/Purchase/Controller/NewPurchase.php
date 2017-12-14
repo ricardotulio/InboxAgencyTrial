@@ -2,10 +2,10 @@
 
 namespace InboxAgency\Purchase\Controller;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use InboxAgency\Cart\Service\CartServiceInterface;
-use InboxAgency\Purchase\Service\PurchaseServiceInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
+use InboxAgency\Cart\Service\CartService;
+use InboxAgency\Purchase\Service\PurchaseService;
 use InboxAgency\User\Entity\User;
 use InboxAgency\Purchase\Entity\Purchase;
 
@@ -18,20 +18,17 @@ class NewPurchase
 
     private $purchaseService;
 
-    private $view;
-
     public function __construct(
-        CartServiceInterface $cartService,
-        PurchaseServiceInterface $purchaseService
+        CartService $cartService,
+        PurchaseService $purchaseService
     ) {
         $this->cartService = $cartService;
         $this->purchaseService = $purchaseService;
-        $this->view = $view;
     }
 
     public function __invoke(
-        ServerRequestInterface $request,
-        ResponseInterface $response
+        Request $request,
+        Response $response
     ) {
         $cart = $this->cartService->getCart();
 

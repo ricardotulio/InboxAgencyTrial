@@ -10,7 +10,7 @@ interface CartServiceInterface
 
     public function addProduct(ProductInterface $product, $qty);
 
-    public function removeProduct($id);
+    public function removeProduct($productId);
 
     public function hasItems();
 

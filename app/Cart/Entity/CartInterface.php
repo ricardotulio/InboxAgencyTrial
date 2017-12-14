@@ -6,7 +6,7 @@ interface CartInterface
 {
     public function addCartItem(CartItemInterface $item);
 
-    public function removeCartItem($id);
+    public function removeCartItem($itemId);
 
     public function getCartItems();
 

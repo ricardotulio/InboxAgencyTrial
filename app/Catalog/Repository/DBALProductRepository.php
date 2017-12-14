@@ -17,12 +17,12 @@ class DBALProductRepository implements ProductRepositoryInterface
         $this->conn = $conn;
     }
 
-    public function findById($id)
+    public function findById($productId)
     {
         $sql = 'SELECT * FROM products where id = :id';
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue('id', $id);
+        $stmt->bindValue('id', $productId);
         $stmt->execute();
 
         $productData = $stmt->fetch();

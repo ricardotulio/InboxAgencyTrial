@@ -38,11 +38,11 @@ class CartService implements CartServiceInterface
         $this->session->set('cart', $cart);
     }
 
-    public function removeProduct($id)
+    public function removeProduct($productId)
     {
         $cart = $this->getCart();
 
-        $cart->removeCartItem($id);
+        $cart->removeCartItem($productId);
         $this->session->set('cart', $cart);
     }
 
