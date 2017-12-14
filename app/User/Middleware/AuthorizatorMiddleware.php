@@ -5,7 +5,7 @@ namespace InboxAgency\User\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class Authorizator
+class AuthorizatorMiddleware
 {
     public function __invoke(
         ServerRequestInterface $request,

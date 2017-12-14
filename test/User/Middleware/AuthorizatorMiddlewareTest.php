@@ -9,7 +9,7 @@ use Psr\Http\Message\UriInterface;
 use InboxAgency\Session\SessionInterface;
 use InboxAgency\User\Entity\UserInterface;
 
-class AuthorizatorTest extends TestCase
+class AuthorizatorMiddlewareTest extends TestCase
 {
     /**
      * @test
@@ -35,9 +35,9 @@ class AuthorizatorTest extends TestCase
             return 'authorized';
         };
 
-        $authorizator = new Authorizator();
+        $authorizator = new AuthorizatorMiddleware();
         $this->assertEquals(
-            'authorized', 
+            'authorized',
             $authorizator(
                 $request,
                 $response,
@@ -79,9 +79,9 @@ class AuthorizatorTest extends TestCase
             return 'authorized';
         };
 
-        $authorizator = new Authorizator();
+        $authorizator = new AuthorizatorMiddleware();
         $this->assertEquals(
-            'authorized', 
+            'authorized',
             $authorizator(
                 $request,
                 $response,
@@ -131,10 +131,10 @@ class AuthorizatorTest extends TestCase
             return 'authorized';
         };
 
-        $authorizator = new Authorizator();
+        $authorizator = new AuthorizatorMiddleware();
 
         $this->assertSame(
-            $response, 
+            $response,
             $authorizator(
                 $request,
                 $response,

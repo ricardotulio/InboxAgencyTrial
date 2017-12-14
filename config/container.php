@@ -160,7 +160,7 @@ $container['ctrl_currency_setcurrency'] = function($container) {
 $container['app'] = function($container) {
     $app = new \Slim\App($container);
 
-    $app->add(new InboxAgency\User\Middleware\Authorizator(
+    $app->add(new InboxAgency\User\Middleware\AuthorizatorMiddleware(
         new InboxAgency\User\Service\SessionAuthorizator()
     ));
 
