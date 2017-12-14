@@ -25,6 +25,11 @@ class Cart implements CartInterface
         unset($this->items[$itemId]);
     }
 
+    public function getCartItem($itemId)
+    {
+        return $this->items[$itemId];
+    }
+
     public function getCartItems()
     {
         return $this->items;

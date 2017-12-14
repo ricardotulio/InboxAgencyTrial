@@ -8,6 +8,8 @@ interface CartInterface
 
     public function removeCartItem($itemId);
 
+    public function getCartItem($itemId);
+
     public function getCartItems();
 
     public function hasItems();
